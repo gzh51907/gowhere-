@@ -7,7 +7,7 @@ class Mine extends Component{
     render(){
         return(
             <div>
-                Mine
+                登录注册页面
             </div>
         )
     }
