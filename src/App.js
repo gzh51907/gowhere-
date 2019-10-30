@@ -9,7 +9,7 @@ import {
 import { Menu, Icon } from 'antd';
 
 
-import Vacation from './pages/Vacation';
+import Vacation from './pages/Vacation/Vacation.js';
 import Goods from './pages/Goods';
 import Special from './pages/Special';
 import Mine from './pages/Mine';
