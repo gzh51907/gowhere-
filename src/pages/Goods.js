@@ -7,7 +7,7 @@ class Goods extends Component{
     render(){
         return(
             <div>
-                Goods
+                Goods1
             </div>
         )
     }
