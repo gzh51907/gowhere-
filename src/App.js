@@ -49,12 +49,18 @@ class App extends Component {
             }
         ]
     }
+    componentDidMount() {
+        let { location: { pathname } } = this.props;
+        this.setState({
+            selected: pathname,
+        });
+    }
     render() {
         let { selected, menu } = this.state;
         let { history } = this.props;
         return (
             <div>
-                <div style={{ marginBottom: 48 }}>
+                <div style={{ marginBottom: 52 }}>
                     <Switch>
                         <Route path="/vacation" component={Vacation} />
                         <Route path="/goods" component={Goods} />
