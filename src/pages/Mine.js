@@ -7,7 +7,7 @@ class Mine extends Component{
     render(){
         return(
             <div>
-                注册登录修改
+                登录注册页面
             </div>
         )
     }
