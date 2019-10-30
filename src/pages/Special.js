@@ -7,7 +7,7 @@ class Special extends Component{
     render(){
         return(
             <div>
-                Special
+                特卖
             </div>
         )
     }
