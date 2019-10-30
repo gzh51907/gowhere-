@@ -1,0 +1,103 @@
+ul,
+li {
+	list-style: none;
+}
+.search {
+	margin-top: 20px;
+	margin-left: 40px;
+	position: relative;
+	input {
+		border-radius: 13px;
+		border-color: #666;
+	}
+	.sousuo {
+		position: absolute;
+		left: 5px;
+		top: 5px;
+	}
+}
+.carousel {
+	width: 100%;
+	margin-top: 10px;
+	div {
+		width: 100%;
+		height: 110px;
+		img {
+			width: 100%;
+			height: 100%;
+			display: block;
+		}
+	}
+}
+.adv {
+	width: 33px;
+	height: 30px;
+	position: relative;
+	p {
+		width: 33px;
+		height: 22px;
+		background: #000;
+		opacity: 0.6;
+		color: #fff;
+		text-align: center;
+		position: absolute;
+		left: 0;
+		bottom: 15px;
+		z-index: 1000;
+	}
+}
+.main {
+	width: 100%;
+	height: auto;
+	background: #58bd58;
+	.contain {
+		width: 88%;
+		margin: auto;
+		.gutterAll {
+			.gutter-row {
+				margin-top: 20px;
+				.gutter-box {
+					width: 100px;
+					height: 100px;
+					position: relative;
+					img {
+						width: 100px;
+						height: 100px;
+					}
+					.contents {
+						width: 80px;
+                        height: 48px;
+                        text-align: center;
+						background: #fff;
+						opacity: 0.8;
+                        text-align: center;
+                        position: absolute;
+                        top:77px;
+                        left:10px;
+                        font-size: 18px;
+                        p{
+                            font-size: 14px;
+                        }
+					}
+				}
+            }
+            .sp4{
+                .gutter-box{
+                    position: relative;
+                    .contents::after{
+                        content:'当季hot';
+                        display:inline-block;
+                        width:60px;
+                        height: 20px;
+                        background:rgb(245, 137, 155);
+                        color:#fff;
+                        font-size: 8px;
+                        position: absolute;
+                        top:-15px;
+                        left:10px;
+                    }
+                }
+            }
+		}
+	}
+}
