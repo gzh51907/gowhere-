@@ -16,10 +16,12 @@ Router.use((req, res, next) => {
 })
 
 const userRouter = require('./user');
+const listRouter = require('./list');
 
 Router.use(express.urlencoded({ extended: true }), express.json());
 
 Router.use('/user', userRouter);
+Router.use('/list', listRouter);
 
 module.exports = Router
 
