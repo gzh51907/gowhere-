@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect, Switch } from  'react-router-dom'
 import Notelogin from './mine/Notelogin.js'
 import Accountlogin from './mine/Accountlogin.js'
 
@@ -11,6 +12,7 @@ import { Icon } from 'antd';
 import './css/Mine.scss'
 
 class Mine extends Component {
+
     state = {
         selected: ['/notelogin'],
         menu: [
@@ -32,6 +34,11 @@ class Mine extends Component {
         ]
     }
 
+    goBack = () => {
+        console.log(window.location)
+        window.location.href = "http://127.0.0.1:8080/#/vacation"
+    }
+
     handleClick = (index) => {
         let menu = this.state.menu
         menu.map(item => item.selected = !item.selected)
@@ -50,7 +57,7 @@ class Mine extends Component {
         return (
             <div>
                 <div id="header">
-                    <Icon className="arrowleft" type="left" />
+                    <Icon onClick={this.goBack} className="arrowleft" type="left" />
                     <h2>登录</h2>
                     <span onClick={this.handleReg}>注册</span>
                 </div>
@@ -65,8 +72,11 @@ class Mine extends Component {
                         </ul>
                     </div>
                     <div className="form">    
-                        <Route path="/mine/notelogin" component={Notelogin} />
-                        <Route path="/mine/accountlogin" component={Accountlogin} />
+                        <Switch>
+                            <Route path="/mine/notelogin" component={Notelogin} />
+                            <Route path="/mine/accountlogin" component={Accountlogin} />
+                            <Redirect form="/mine" to="/mine/notelogin" exact />
+                        </Switch>
                     </div>
 
                 </div>

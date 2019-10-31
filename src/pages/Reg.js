@@ -29,7 +29,7 @@ export default class Reg extends Component {
                             <div className="control-item">
                                 <label>图形码</label>
                                 <input className="inp" type="text" placeholder="请输入图形码" />
-                                <Captcha className="codebtn" length={4} onChange={function (code) { console.log(code) }} />
+                                <Captcha length={4} onChange={function (code) { console.log(code) }} />
                             </div>
                             <div className="control-item">
                                 <label>验证码</label>

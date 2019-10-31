@@ -18,7 +18,7 @@ class Goods extends Component {
                 type: 'tejiayou'
             },
             {
-                text: '亲自游学',
+                text: '亲子游学',
                 type: 'qinziyouxue'
             },
             {
