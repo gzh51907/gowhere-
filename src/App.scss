@@ -1,0 +1,42 @@
+body {
+    width: 100%;
+}
+
+#components-layout-demo-top-side-2 .logo {
+    width: 120px;
+    height: 31px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px 28px 16px 0;
+    float: left;
+}
+
+.backsys {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+
+    .header {
+        padding-left: 0;
+
+        h1 {
+            color: #ffffff;
+        }
+
+        .current-user {
+            color: #ffffff;
+        }
+
+        .current-user {
+            position: absolute;
+            top: 0;
+            right: 20px;
+            width: 200px;
+            height: 100%;
+            color: #ffffff;
+        }
+    }
+}
