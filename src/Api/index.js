@@ -39,5 +39,4 @@ export default {
     checkAttention,
     addAttention,
     special,
-
 }
