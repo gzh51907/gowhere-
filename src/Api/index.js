@@ -1,14 +1,15 @@
 import axios from 'axios';
-let datalist = axios.get({
-    baseURL:'http://localhost:27017/gowhere/home'
+let gowhere = axios.create({
+    baseURL:'http://localhost:12345'
 })
 async function get(params, config = {}) {  
-    let { data } = await datalist.get('', {
+    let { data } = await gowhere.get('/home', {
         ...config,
         params
     })
     return data;
 }
+
 export default {
     get
 }
