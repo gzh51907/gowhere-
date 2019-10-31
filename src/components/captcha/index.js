@@ -61,11 +61,11 @@ class Captcha extends React.Component {
       'position': 'absolute',
       'left': `${this.random(uW * i, ((uW * i) + uW) - (uW / 2))}px`,
       'top': '50%',
-      'transform': `rotate(${this.random(-15, 15)}deg) translateY(-50%)`,
-      'OTransform': `rotate(${this.random(-15, 15)}deg) translateY(-50%)`,
-      'MsTransform': `rotate(${this.random(-15, 15)}deg) translateY(-50%)`,
-      'MozTransform': `rotate(${this.random(-15, 15)}deg) translateY(-50%)`,
-      'WebkitTransform': `rotate(${this.random(-15, 15)}deg) translateY(-50%)`,
+      'transform': `rotate(${this.random(-10, 10)}deg) translateY(-50%)`,
+      'OTransform': `rotate(${this.random(-10, 10)}deg) translateY(-50%)`,
+      'MsTransform': `rotate(${this.random(-10, 10)}deg) translateY(-50%)`,
+      'MozTransform': `rotate(${this.random(0, 10)}deg) translateY(-50%)`,
+      'WebkitTransform': `rotate(${this.random(-10, 10)}deg) translateY(-50%)`,
       'fontFamily': `${OPTIONS.fonts[this.random(0, OPTIONS.fonts.length - 1)]}`,
       'fontWeight': 'bold',
       'zIndex': '2'
@@ -106,7 +106,7 @@ class Captcha extends React.Component {
     const { result } = this.state;
     const style = Object.assign({}, this.state.style, this.props.style);
 		return (
-			<div style={style} onClick={() => this.createCodes()}>
+      <div className="codebtn" style={style} onClick={() => this.createCodes()}>
         {
           result.map((item, index) => {
             return  <span key={index} style={item.style}>{item.code}</span>
@@ -125,7 +125,7 @@ class Captcha extends React.Component {
 
 	Captcha.defaultProps = {
     height: '30',
-		width: '80',
+		width: '100',
     style: {
       position: 'relative',
       overflow: 'hidden',
