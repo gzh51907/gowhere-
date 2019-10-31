@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Icon, Button } from 'antd';
+import Api from '../Api';
 
 class Special extends Component {
     state = {
@@ -91,13 +92,22 @@ class Special extends Component {
         ]
     }
 
+    async componentDidMount(){
+        let data = await Api.special({});
+        console.log(data)
+    }
+
+    goto = (path) => {
+        let {history} = this.props;
+        history.push(path)
+     }
     render() {
         let { datalist } = this.state;
         return (
             <div id="Special" style={{ backgroundColor: '#ebebeb' }}>
                 <div className="header" style={{ height: 44, width: '100%', backgroundColor: '#00bcd4', position: 'fixed', top: 0, color: '#fff' ,zIndex:10}}>
                     <Row style={{ height: '100%' }}>
-                        <Col style={{ height: '100%', textAlign: 'center' }} span={3}><Icon type="left" style={{ fontSize: 24, lineHeight: '44px' }} /></Col>
+                        <Col onClick={this.goto.bind(this,'/vacation')} style={{ height: '100%', textAlign: 'center' }} span={3}><Icon type="left" style={{ fontSize: 24, lineHeight: '44px' }} /></Col>
                         <Col span={18} style={{ height: '100%', textAlign: 'center', fontSize: 18, lineHeight: '44px' }}>特卖· 广深香出发<Icon type="caret-down" style={{ fontSize: 10 }} /></Col>
                         <Col style={{ height: '100%', textAlign: 'center' }} span={3}><Icon type="share-alt" style={{ fontSize: 24, lineHeight: '44px' }} /></Col>
                     </Row>
