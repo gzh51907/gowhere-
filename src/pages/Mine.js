@@ -21,9 +21,6 @@ class Mine extends Component {
                 path: '/notelogin',
                 text: '短信验证码登录',
                 selected: true,
-                component: {
-
-                }
             },
             {
                 name: 'accountlogin',
@@ -45,7 +42,6 @@ class Mine extends Component {
         this.setState({
             menu
         })
-        console.log(this.props.match.path + menu[index].path)
         this.props.history.push(this.props.match.path + menu[index].path)
     }
 
