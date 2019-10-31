@@ -1,13 +1,43 @@
 import axios from 'axios';
 
-let list = axios.create({
-    baseURL: 'http://localhost:12345/list'
+let gowhere = axios.create({
+    baseURL: 'http://localhost:12345'
 })
-let special = axios.create({
-    baseURL: 'http://localhost:12345/list'
-})
+
+
+async function list(params) {
+    let data  = await gowhere.get('/list', {
+        params
+    });
+    return data;
+}
+
+async function checkAttention(params) {
+    let data  = await gowhere.get('/content/checkgz', {
+        params
+    });
+    return data;
+}
+
+async function addAttention(params) {
+    let data  = await gowhere.get('/content/addgz', {
+        params
+    });
+    return data;
+}
+
+async function special(params) {
+    let data  = await gowhere.get('/page', {
+        params
+    });
+    return data;
+}
+
 
 export default {
     list,
-    special
+    checkAttention,
+    addAttention,
+    special,
+
 }
