@@ -32,6 +32,24 @@ async function special(params) {
     });
     return data;
 }
+async function weidan(params) {
+    let data  = await gowhere.get('/page/pagef', {
+        params
+    });
+    return data;
+}
+async function dijia(params) {
+    let data  = await gowhere.get('/page/pages', {
+        params
+    });
+    return data;
+}
+async function ziyouxing(params) {
+    let data  = await gowhere.get('/page/paget', {
+        params
+    });
+    return data;
+}
 
 
 export default {
@@ -39,4 +57,7 @@ export default {
     checkAttention,
     addAttention,
     special,
+    weidan,
+    dijia,
+    ziyouxing
 }
