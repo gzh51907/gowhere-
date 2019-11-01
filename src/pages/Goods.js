@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import { Row, Col, Icon, Button, Tabs, Spin, message } from 'antd';
 import Api from '../Api';
-import { connect } from 'react-redux';
 
-const mapStateToProps = (state) => {
-    return {
-        username: state.userReducer.userInf.username
-    }
-}
-@connect(mapStateToProps)
+
 class Goods extends Component {
     state = {
         activeKey: 'jingxuan',
@@ -70,9 +64,10 @@ class Goods extends Component {
             })
             this.setState({ datalist: data })
         } else {
-            if (this.props.username) {
+           let username = localStorage.getItem('phone')
+            if (username) {
                 let { data } = await Api.checkAttention({
-                    username: this.props.username
+                    username: username
                 })
                 let dataArr = data.map(item => {
                     return item.info
@@ -130,8 +125,9 @@ class Goods extends Component {
     }
 
     addAttention = async (name) => {
+        let username = localStorage.getItem('phone')
         let { data } = await Api.addAttention({
-            username: this.props.username,
+            username: username,
             name
         })
         if (data.code === 1) {
@@ -142,7 +138,8 @@ class Goods extends Component {
     }
 
     gotoAttention = () => {
-        if (!this.props.username) {
+        let username = localStorage.getItem('phone')
+        if (!username) {
             let { history } = this.props;
             history.push('/mine')
         }

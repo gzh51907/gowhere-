@@ -3,10 +3,6 @@ let gowhere = axios.create({
     baseURL: 'http://localhost:12345'
 })
 
-<<<<<<< HEAD
-async function getCode(phone, config = {}) {
-    let { data } = await datalist.get('/notecode', {
-=======
 async function get(params, config = {}) {
     let { data } = await gowhere.get('/home', {
         ...config,
@@ -17,7 +13,6 @@ async function get(params, config = {}) {
 
 async function getCode(phone, config = {}) {
     let data = await gowhere.get('/notecode', {
->>>>>>> wwg
         params:{
             ...config,
             phone
