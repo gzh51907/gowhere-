@@ -14,6 +14,7 @@ import Goods from './pages/Goods';
 import Special from './pages/Special';
 import Mine from './pages/Mine';
 import Reg from './pages/Reg';
+import SpecialList from './pages/SpecialList';
 
 
 const mapStateToProps = (state) => {//这里的state就是store里的state
@@ -62,6 +63,7 @@ class App extends Component {
                         <Route path="/special" component={Special} />
                         <Route path="/mine" component={Mine} />
                         <Route path="/reg" component={Reg} />
+                        <Route path="/specialList" component={SpecialList} />
                         <Redirect from="/" to="/vacation" exact />
                         <Route render={() => <div><h1>404</h1>页面不存在</div>} />
                     </Switch>

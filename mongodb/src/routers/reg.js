@@ -9,12 +9,10 @@ const colName = 'user';
 
 // 注册
 Router.post('/reg', async (req, res) => {
-    let { username, password } = req.query;
-    console.log(username, password);
-    let time = new Date();
+    let { username, password } = req.body;
     let result
     try {
-        await mongo.create(colName, [{ username, password, regtime: time.toLocaleString() }]);
+        await mongo.create(colName, [{ username, password, regtime: new Date() }]);
         result = formatData()
     } catch (err) {
         result = formatData({ code: 0 })
@@ -58,7 +56,6 @@ Router.get('/', async (req, res) => {
     res.send(result)
 })
 
-
 //查找某个用户
 Router.get('/find', async (req, res) => {
     let { username } = req.query;
@@ -66,13 +63,29 @@ Router.get('/find', async (req, res) => {
     res.send(result)
 })
 
-
 //增加用户
 Router.post('/adduser', async (req, res) => {
     let { username, password } = req.query;
     let result = await mongo.create(colName, [{ username, password }])
     res.send(result)
 })
+
+
+// 删除用户
+Router.delete("/remove", async (req, res) => {
+    let { id } = req.query;
+    await mongo.remove(colName, { id });
+    res.send(formatData());
+})
+
+
+//修改用户信息
+Router.patch("/update", async (req, res) => {
+    let { id, username, password } = req.query;
+    await mongo.update(colName, { id }, { $set: { password, username } });
+    res.send(formatData());
+})
+
 
 
 

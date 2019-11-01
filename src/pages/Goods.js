@@ -82,12 +82,14 @@ class Goods extends Component {
                     datas = [...datas, ...item]
                 })
                 await this.setState({ datalist: datas })
-                if(this.state.datalist.length!==0){
-                    this.noAttention.style.display='none'
-                }else{
-                    this.noAttention.style.display='block'
+                if (this.state.datalist.length !== 0) {
+                    this.noAttention.style.display = 'none'
+                } else {
+                    this.noAttention.style.display = 'block'
                 }
-            } 
+            } else {
+                this.noAttention.style.display = 'block'
+            }
         }
     }
 
@@ -128,21 +130,20 @@ class Goods extends Component {
     }
 
     addAttention = async (name) => {
-        if (this.state.activeKey !== 'guanzhu') {
-            await Api.addAttention({
-                username: this.props.username,
-                name
-            })
-        } else {
+        let { data } = await Api.addAttention({
+            username: this.props.username,
+            name
+        })
+        if (data.code === 1) {
+            message.success('关注成功~');
+        } else if (data.code === 0) {
             message.info('您已经关注过了噢~');
         }
     }
 
-    gotoAttention = ()=>{
-        if(this.props.username){
-            this.changeType('jingxuan')
-        }else{
-            let {history} = this.props;
+    gotoAttention = () => {
+        if (!this.props.username) {
+            let { history } = this.props;
             history.push('/mine')
         }
     }
@@ -232,7 +233,7 @@ class Goods extends Component {
                     <div ref={el => this.noMore = el} style={{ width: '100%', textAlign: 'center', fontSize: 17, paddingBottom: 15, display: 'none' }}>
                         没有更多了
                     </div>
-                    <div ref={el => this.noAttention = el} style={{ width: '100%', textAlign: 'center', display: 'block', height: 600 }}>
+                    <div ref={el => this.noAttention = el} style={{ width: '100%', textAlign: 'center', display: 'none', height: 600 }}>
                         <img src='https://s.qunarzz.com/package_ugc/index/noAttention.png' style={{ display: 'block', margin: 'auto', marginTop: 54 }} />
                         <img onClick={this.gotoAttention} src='https://s.qunarzz.com/package_ugc/index/attentionBtn.png' style={{ display: 'block', margin: 'auto', marginTop: 12 }} />
                     </div>

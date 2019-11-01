@@ -9,7 +9,7 @@ function reducer(state = initialState, { type, payload }) {//action,解构
         case 'SET_USER_INF':
             return {
                 ...state,
-                userInf: [payload]
+                userInf: payload.userInf
             }
         case 'REMOVE_USER_INF':
             return {

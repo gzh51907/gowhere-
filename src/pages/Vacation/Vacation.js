@@ -34,28 +34,43 @@ class Vacation extends Component {
         datalist: [],
     }
     async componentDidMount() {
-        let datalist = await Api.get();
+        let datalist = await Api.getData();
         this.setState({
             datalist,
         });
-        console.log('datalist',datalist);
-        // window.addEventListener('scroll', this.handleScroll);
+        // console.log(datalist);
+        let searchDOM = this.searchDOM;
+        let cityDOM = this.cityDOM;
+        console.log(searchDOM);
+        window.onscroll = function (e) {
+            console.log(window.pageYOffset);
+            if (window.pageYOffset > 37) {
+                searchDOM.className = 'active'
+                cityDOM.style.display = 'none';
+            } else{
+                searchDOM.style.className = 'sTop';
+                cityDOM.style.display = 'inline-block';
+            }
+        }
     }
 
     render() {
         // console.log(this.props)
+        const { Search } = Input;
         let { datalist, imagelist } = this.state;
         // console.log("datalist", datalist);
         return (
             <div style={{ background: '#fff' }} className="fixed1">
-                <div className="header">
+                <div className="header" style={{ position: 'fixed', top: 0, left: 0, width: '100%',background:'#fff', zIndex: 9999 }}>
                     <i style={{ fontSize: 18, color: '#999', height: 20, display: 'inlineBlock', marginLeft: 18, paddingRight: 110 }}><Icon type="left" /></i>
-                    <span style={{ color: '#444', fontWeight: 500 }}>旅游度假 . 广州站</span><Icon type="caret-down" />
-                    <Icon type="message" style={{ display: 'inlineBlock', marginLeft: 60, fontSize: 18 }} />
+                    <span style={{ color: '#444', fontWeight: 500 }} ref={el => this.cityDOM = el}>旅游度假 . 广州站</span><Icon type="caret-down" />
+                    <Icon type="message" style={{ display: 'inlineBlock', fontSize: 18, position: 'fixed', top: 5, right: 10 }} />
                 </div>
-                <div className='search' ref={el => this.inputDOM = el} onChange={this.changeKeyword}>
-                    <Input size='small' placeholder='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;搜索目的地，主题，景点' style={{ width: 330 }} />
-                    <Icon type="search" className='sousuo' />
+                <div className='search'>
+                    <div className="sTop" ref={el => this.searchDOM = el}>
+                        <Search placeholder="搜索目的地，城市，景点" size="small" style={{ width: '80%'}}
+                        />
+                    </div>
                 </div>
                 {/* 轮播图 */}
                 <Carousel className="carousel" autoplay='true'>
@@ -328,7 +343,7 @@ class Vacation extends Component {
                             {
                                 <Row gutter={30} className="gutters">{
                                     datalist.map(item => {
-                                        return <Col span={12} classname="pics">
+                                        return <Col span={12} className="pics">
                                             <div className="classity">
                                                 <img src={item.img} />
                                             </div>
