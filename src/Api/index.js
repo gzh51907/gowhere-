@@ -11,7 +11,6 @@ async function get(params, config = {}) {
     return data;
 }
 
-
 async function getCode(phone, config = {}) {
     let data = await gowhere.get('/notecode', {
         params:{
@@ -21,15 +20,6 @@ async function getCode(phone, config = {}) {
     })
     console.log("data", data)
     return data;
-}
-
-
-async function get(params, config = {}) {
-    let { data } = await gowhere.get('/home', {
-        ...config,
-        params
-    });
-    return data
 }
 
 
@@ -83,6 +73,7 @@ async function ziyouxing(params) {
 export default {
     get,
     list,
+    getCode,
     checkAttention,
     addAttention,
     special,
