@@ -34,19 +34,18 @@ class Vacation extends Component {
         datalist: [],
     }
     async componentDidMount() {
-        // let { img, title, price, tag } = this.state;
         let datalist = await Api.get();
         this.setState({
             datalist,
         });
-        // console.log(datalist);
-        window.addEventListener('scroll', this.handleScroll);
+        console.log('datalist',datalist);
+        // window.addEventListener('scroll', this.handleScroll);
     }
 
     render() {
         // console.log(this.props)
         let { datalist, imagelist } = this.state;
-        console.log("datalist", datalist);
+        // console.log("datalist", datalist);
         return (
             <div style={{ background: '#fff' }} className="fixed1">
                 <div className="header">
