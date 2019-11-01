@@ -19,6 +19,7 @@ Router.use((req, res, next) => {
 
 const regRouter = require('./reg');
 const listRouter = require('./list');
+const notecodeRouter = require('./notecode');
 const homeRouter = require('./home');
 const pageRouter = require('./page');
 const contentTRouter = require('./content');
@@ -27,6 +28,7 @@ Router.use(express.urlencoded({ extended: true }), express.json());
 
 Router.use('/user', regRouter);
 Router.use('/list', listRouter);
+Router.use('/notecode', notecodeRouter)
 Router.use('/home', homeRouter);
 Router.use('/page', pageRouter);
 Router.use('/content', contentTRouter);
