@@ -85,7 +85,7 @@ export default class Notelogin extends Component {
         })
     }
 
-    // 判断验证码是否输入正确
+    // 登录验证
     handleLogin = async() => {
         let phone = this.state.phone.trim()
         let codeState = this.state.code
