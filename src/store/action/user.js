@@ -1,7 +1,7 @@
-function login(username) {
+function login(userInf) {
     return {
         type: 'SET_USER_INF',
-        payload:{username}
+        payload: userInf,
     }
 }
 

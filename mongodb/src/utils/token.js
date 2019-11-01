@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken');
  */
 
 let {secret} = require('../config.json');
-function create(data,expiresIn=60*60*24*7){
+function create(data,expiresIn='7d'){
     let token = jwt.sign({data}, secret, {
         expiresIn
     });
