@@ -34,13 +34,12 @@ class Vacation extends Component {
         datalist: [],
     }
     async componentDidMount() {
-        // let { img, title, price, tag } = this.state;
         let datalist = await Api.get();
         this.setState({
             datalist,
         });
-        // console.log(datalist);
-        window.addEventListener('scroll', this.handleScroll);
+        console.log(datalist);
+        // window.addEventListener('scroll', this.handleScroll);
     }
 
     render() {
