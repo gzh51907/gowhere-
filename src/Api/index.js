@@ -3,8 +3,7 @@ let gowhere = axios.create({
     baseURL: 'http://localhost:12345'
 })
 
-async function get(phone, config = {}) {
-    console.log(phone)
+async function getCode(phone, config = {}) {
     let { data } = await datalist.get('/notecode', {
         params:{
             ...config,
@@ -72,6 +71,7 @@ async function ziyouxing(params) {
 
 
 export default {
+    getCode,
     get,
     list,
     checkAttention,
