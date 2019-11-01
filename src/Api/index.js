@@ -3,11 +3,11 @@ import axios from 'axios';
 let gowhere = axios.create({
     baseURL:'http://localhost:12345'
 })
-async function get(params, config = {}) {
-    let { data } = await gowhere.get('/home', {
+async function getData(params, config = {}) {
+    let { data}  = await gowhere.get('/home', {
         ...config,
         params
-    })
+    });
     return data;
 }
 async function list(params) {
@@ -43,5 +43,5 @@ export default {
     checkAttention,
     addAttention,
     special,
-    get
+    getData
 }
