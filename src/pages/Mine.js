@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Redirect, Switch } from  'react-router-dom'
+import { Redirect, Switch } from 'react-router-dom'
 import Notelogin from './mine/Notelogin.js'
-import Accountlogin from './mine/Accountlogin.js'
+import Accountlogin from './mine/Accountlogin.js';
 
 import {
     Route,
@@ -31,10 +31,6 @@ class Mine extends Component {
         ]
     }
 
-    goBack = () => {
-        console.log(window.location)
-        window.location.href = "http://127.0.0.1:8080/#/vacation"
-    }
 
     handleClick = (index) => {
         let menu = this.state.menu
@@ -49,11 +45,13 @@ class Mine extends Component {
         this.props.history.push('/reg')
     }
 
+
     render() {
+        let {goBack} = this.props.history;
         return (
             <div>
                 <div id="header">
-                    <Icon onClick={this.goBack} className="arrowleft" type="left" />
+                    <Icon onClick={goBack} className="arrowleft" type="left" />
                     <h2>登录</h2>
                     <span onClick={this.handleReg}>注册</span>
                 </div>
@@ -61,13 +59,13 @@ class Mine extends Component {
                     <div className="nav">
                         <ul className="menu">
                             {
-                                this.state.menu.map( (item, index) => {
-                                    return (<li key={index} onClick={this.handleClick.bind(this, index)} style={item.selected ? { background: '#fff', color: '#18a9b9'} : {}}>{item.text}</li>)
+                                this.state.menu.map((item, index) => {
+                                    return (<li key={index} onClick={this.handleClick.bind(this, index)} style={item.selected ? { background: '#fff', color: '#18a9b9' } : {}}>{item.text}</li>)
                                 })
                             }
                         </ul>
                     </div>
-                    <div className="form">    
+                    <div className="form">
                         <Switch>
                             <Route path="/mine/notelogin" component={Notelogin} />
                             <Route path="/mine/accountlogin" component={Accountlogin} />
