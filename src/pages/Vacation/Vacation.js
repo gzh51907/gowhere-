@@ -35,25 +35,26 @@ class Vacation extends Component {
     }
     async componentDidMount() {
         // let { img, title, price, tag } = this.state;
-        let { datalist } = await Api.get();
+        let datalist = await Api.get();
         this.setState({
             datalist,
         });
-
-        console.log('datalist', datalist);
+        // console.log(datalist);
+        window.addEventListener('scroll', this.handleScroll);
     }
+
     render() {
         // console.log(this.props)
-        console.log(this.state.imagelist);
-        let { imagelist } = this.state;
+        let { datalist, imagelist } = this.state;
+        console.log("datalist", datalist);
         return (
             <div style={{ background: '#fff' }} className="fixed1">
                 <div className="header">
                     <i style={{ fontSize: 18, color: '#999', height: 20, display: 'inlineBlock', marginLeft: 18, paddingRight: 110 }}><Icon type="left" /></i>
                     <span style={{ color: '#444', fontWeight: 500 }}>旅游度假 . 广州站</span><Icon type="caret-down" />
-                    <Icon type="message" style={{ display: 'inlineBlock', marginLeft: 110, fontSize: 18 }} />
+                    <Icon type="message" style={{ display: 'inlineBlock', marginLeft: 60, fontSize: 18 }} />
                 </div>
-                <div className='search'>
+                <div className='search' ref={el => this.inputDOM = el} onChange={this.changeKeyword}>
                     <Input size='small' placeholder='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;搜索目的地，主题，景点' style={{ width: 330 }} />
                     <Icon type="search" className='sousuo' />
                 </div>
@@ -325,7 +326,29 @@ class Vacation extends Component {
                                     超值自由行
                                 </Menu.Item>
                             </Menu>
-
+                            {
+                                <Row gutter={30} className="gutters">{
+                                    datalist.map(item => {
+                                        return <Col span={12} classname="pics">
+                                            <div className="classity">
+                                                <img src={item.img} />
+                                            </div>
+                                            <p>{item.title}</p>
+                                            <span className="title">
+                                                {item.tag}
+                                            </span>
+                                            <div className="alls">
+                                                <i>￥</i>
+                                                <span className="price">
+                                                    {item.price}
+                                                </span>
+                                                人/起
+                                                </div>
+                                        </Col>
+                                    })
+                                }
+                                </Row>
+                            }
                         </div>
                     </div>
                 </div>

@@ -9,10 +9,12 @@ const colName = 'user';
 
 // 注册
 Router.post('/reg', async (req, res) => {
-    let { username, password } = req.body;
+    let { username, password } = req.query;
+    console.log(username, password);
+    let time = new Date();
     let result
     try {
-        await mongo.create(colName, [{ username, password, regtime: new Date() }]);
+        await mongo.create(colName, [{ username, password, regtime: time.toLocaleString() }]);
         result = formatData()
     } catch (err) {
         result = formatData({ code: 0 })
@@ -56,12 +58,14 @@ Router.get('/', async (req, res) => {
     res.send(result)
 })
 
+
 //查找某个用户
 Router.get('/find', async (req, res) => {
     let { username } = req.query;
     let result = await mongo.find(colName, { username });
     res.send(result)
 })
+
 
 //增加用户
 Router.post('/adduser', async (req, res) => {

@@ -6,7 +6,7 @@ li {
 	margin-top: 20px;
 	margin-left: 40px;
 	position: relative;
-	background:#fff;
+	background: #fff;
 	input {
 		border-radius: 13px;
 		border-color: #666;
@@ -20,7 +20,7 @@ li {
 .carousel {
 	width: 100%;
 	margin-top: 10px;
-	background:#fff;
+	background: #fff;
 	div {
 		width: 100%;
 		height: 110px;
@@ -35,7 +35,7 @@ li {
 	width: 33px;
 	height: 30px;
 	position: relative;
-	background:#fff;
+	background: #fff;
 	p {
 		width: 33px;
 		height: 22px;
@@ -52,7 +52,7 @@ li {
 .main {
 	width: 100%;
 	height: auto;
-	background:#fff;
+	background: #fff;
 	.contain {
 		width: 88%;
 		margin: auto;
@@ -257,12 +257,12 @@ li {
 					font-size: 18px;
 					color: #fff;
 					text-align: center;
-					width:40px;
+					width: 40px;
 					height: 40px;
 					line-height: 40px;
 					border-radius: 30%;
-					p{
-						color:#212121;
+					p {
+						color: #212121;
 						font-size: 12px;
 					}
 				}
@@ -270,35 +270,75 @@ li {
 					background: #69e2f2;
 				}
 				.global {
-					background:#ffa3a2;
+					background: #ffa3a2;
 				}
 				.country {
-					background:#82f0c6;
+					background: #82f0c6;
 				}
 				.day {
-				background:#ffca7e
-					
+					background: #ffca7e;
 				}
 				.qianzheng {
-					background:#ffa1b3
+					background: #ffa1b3;
 				}
 				.wifi {
-					background:#a9a8ff
+					background: #a9a8ff;
 				}
 			}
 		}
-		.icongroup{
+		.icongroup {
 			margin-top: 40px;
-			background:#fff;
-			.gutterAll{
-				div{
+			background: #fff;
+			.gutterAll {
+				div {
 					font-size: 10px;
-					img{
-						width:28px;
-						height:28px;
+					img {
+						width: 28px;
+						height: 28px;
 					}
-					p{
-						width:52px;
+					p {
+						width: 52px;
+					}
+				}
+			}
+		}
+		.item {
+			width: 100%;
+			.gutters {
+				position: relative;
+				.classity {
+					margin-top: 6px;
+					img {
+						width: 160px;
+						height: 100px;
+					}
+				}
+				p {
+					font-size: 14px;
+					font-weight: 500;
+					color: #111;
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: 2;
+					overflow: hidden;
+				}
+				.title{
+					text-align: center;
+					display: inline-block;
+					width:65%;
+					font-size: 14px;
+					color:#fff;
+					background:#ff5555;
+					position: absolute;
+					left:15px;
+					top:6px;
+				}
+				.alls{
+					font-size: 12px;
+					color:#ff8300;
+					.price{
+						font-size: 18px;
+						font-weight: 700;
 					}
 				}
 			}
