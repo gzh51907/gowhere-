@@ -3,19 +3,30 @@ li {
   list-style: none;
 }
 .search {
-  margin-top: 20px;
-  margin-left: 40px;
+  margin-top: 40px;
   position: relative;
   background: #fff;
+  text-align: center;
+  z-index: 99999;
 }
-.search input {
+.search .sTop {
+  width: 80%;
+}
+.search .sTop input {
   border-radius: 13px;
   border-color: #666;
 }
-.search .sousuo {
-  position: absolute;
-  left: 5px;
+.search .active {
+  position: fixed;
   top: 5px;
+  left: 50px;
+  text-align: center;
+  background: #fff;
+}
+.search .active input {
+  border-radius: 13px;
+  border-color: #666;
+  width: 100%;
 }
 .carousel {
   width: 100%;

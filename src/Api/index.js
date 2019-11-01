@@ -1,15 +1,18 @@
 import axios from 'axios';
+
+
 let gowhere = axios.create({
     baseURL: 'http://localhost:12345'
 })
 
-async function get(params, config = {}) {
-    let { data } = await gowhere.get('/home', {
+async function getData(params, config = {}) {
+    let { data}  = await gowhere.get('/home', {
         ...config,
         params
-    })
+    });
     return data;
 }
+
 
 async function getCode(phone, config = {}) {
     let data = await gowhere.get('/notecode', {
@@ -18,7 +21,6 @@ async function getCode(phone, config = {}) {
             phone
         }        
     })
-    console.log("data", data)
     return data;
 }
 
@@ -68,17 +70,15 @@ async function ziyouxing(params) {
     });
     return data;
 }
-
-
 export default {
-    getCode,
-    get,
     list,
     getCode,
     checkAttention,
     addAttention,
     special,
+    getData,
     weidan,
     dijia,
     ziyouxing
 }
+
