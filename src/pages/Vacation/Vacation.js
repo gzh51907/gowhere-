@@ -39,17 +39,27 @@ class Vacation extends Component {
             datalist,
         });
         // console.log(datalist);
-        let searchDOM = this.searchDOM;
-        let cityDOM = this.cityDOM;
-        console.log(searchDOM);
-        window.onscroll = function (e) {
-            console.log(window.pageYOffset);
-            if (window.pageYOffset > 37) {
-                searchDOM.className = 'active'
-                cityDOM.style.display = 'none';
-            } else{
-                searchDOM.style.className = 'sTop';
-                cityDOM.style.display = 'inline-block';
+        let hideBox = this.hideBox;
+        let nextBox = this.nextBox;
+        let bigBox = this.bigBox;
+        window.onscroll = function () {
+            let scroll = window.scrollY;
+            let hideBoxY = -scroll;
+            let Opacity = 1 - (window.scrollY * 0.05);
+            let bigBoxOffSet = bigBox.offsetHeight;
+            let bigBoxHeight = bigBoxOffSet - scroll;
+
+            if (scroll <= 50) {
+                hideBox.style.transform = 'translateY(' + hideBoxY + 'px)';
+                hideBox.style.opacity = Opacity;
+                nextBox.style.transform = 'translateY(' + hideBoxY + 'px)';
+                bigBox.style.height = bigBoxHeight + 'px';
+
+            } else if (scroll > 50) {
+                hideBox.style.opacity = 0;
+                hideBox.style.transform = 'translateY(-50px)';
+                nextBox.style.transform = 'translateY(-50px)';
+                bigBox.style.height = '44px';
             }
         }
     }
@@ -60,20 +70,23 @@ class Vacation extends Component {
         let { datalist, imagelist } = this.state;
         // console.log("datalist", datalist);
         return (
-            <div style={{ background: '#fff' }} className="fixed1">
-                <div className="header" style={{ position: 'fixed', top: 0, left: 0, width: '100%',background:'#fff', zIndex: 9999 }}>
-                    <i style={{ fontSize: 18, color: '#999', height: 20, display: 'inlineBlock', marginLeft: 18, paddingRight: 110 }}><Icon type="left" /></i>
-                    <span style={{ color: '#444', fontWeight: 500 }} ref={el => this.cityDOM = el}>旅游度假 . 广州站</span><Icon type="caret-down" />
-                    <Icon type="message" style={{ display: 'inlineBlock', fontSize: 18, position: 'fixed', top: 5, right: 10 }} />
-                </div>
-                <div className='search'>
-                    <div className="sTop" ref={el => this.searchDOM = el}>
-                        <Search placeholder="搜索目的地，城市，景点" size="small" style={{ width: '80%'}}
-                        />
+            <div style={{ backgroundColor: '#fff' }} className="fixed1">
+                <div className="header" ref={el => this.bigBox = el} style={{ height: 98, position: 'fixed', top: 0, zIndex: 2000, backgroundColor: '#fff', width: '100%' }}>
+                    <div style={{ position: 'relative', height: 44, backgroundColor: '#fff' }}>
+                        <span style={{ height: '100%', position: 'absolute', left: '12px', top: '12px', zIndex: 1500 }}><Icon type="left" style={{ color: '#616161', fontSize: 24 }} /></span>
+                        <h1 ref={el => this.hideBox = el} style={{ display: 'flex', height: 44, margin: '0 60px', justifyContent: 'center' }}>
+                            <p style={{ color: '#616161', fontWeight: 300, fontSize: 16, lineHeight: '44px' }}>旅游度假</p>
+                            <strong style={{ fontSize: 16, color: '#212121', lineHeight: '44px', margin: '0 5px', fontWeight: 400 }}>· 广州站</strong>
+                            <Icon type="caret-down" style={{ color: '#616161', fontSize: 12, lineHeight: '48px' }} />
+                        </h1>
+                        <span style={{ height: '100%', position: 'absolute', right: '12px', top: '12px', zIndex: 1500 }}><Icon type="message" style={{ color: '#616161', fontSize: 24 }} /></span>
+                    </div>
+                    <div className="sTop" ref={el => this.nextBox = el} style={{ backgroundColor: '#fff' }}>
+                        <Search placeholder="搜索目的地，城市，景点" size="small" style={{ width: 280, backgroundColor: '#fff' }}  />
                     </div>
                 </div>
                 {/* 轮播图 */}
-                <Carousel className="carousel" autoplay='true'>
+                <Carousel className="carousel" autoplay='true' style={{ marginTop: 99 }}>
                     <div className="li1"><img src="http://source.qunarzz.com/site/images/wns/20191023_dujia_homepage_750x192_1.jpg" /></div>
                     <div className="li2"><img src="http://source.qunarzz.com/site/images/wns/20191028_dujia_homepage_750x192_2.jpg" /></div>
                     <div className="li3"><img src="http://source.qunarzz.com/site/images/wns/20190916_qunar_dujia_750x192_3.jpg" /></div>
@@ -342,8 +355,8 @@ class Vacation extends Component {
                             </Menu>
                             {
                                 <Row gutter={30} className="gutters">{
-                                    datalist.map(item => {
-                                        return <Col span={12} className="pics">
+                                    datalist.map((item, index) => {
+                                        return <Col span={12} className="pics" key={index}>
                                             <div className="classity">
                                                 <img src={item.img} />
                                             </div>

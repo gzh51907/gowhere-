@@ -2,28 +2,26 @@
 li {
   list-style: none;
 }
-.search {
-  margin-top: 40px;
-  position: relative;
-  background: #fff;
+.sTop {
+  margin-top: 10px;
+  margin-bottom: 9px;
   text-align: center;
-  z-index: 99999;
+  background: #fff;
 }
-.search .sTop {
-  width: 80%;
-}
-.search .sTop input {
+.sTop input {
+  height: 30px;
   border-radius: 13px;
   border-color: #666;
 }
-.search .active {
+.active {
+  width: 78%;
   position: fixed;
   top: 5px;
   left: 50px;
   text-align: center;
   background: #fff;
 }
-.search .active input {
+.active input {
   border-radius: 13px;
   border-color: #666;
   width: 100%;
