@@ -71,6 +71,23 @@ Router.post('/adduser', async (req, res) => {
 })
 
 
+// 删除用户
+Router.delete("/remove", async (req, res) => {
+    let { id } = req.query;
+    await mongo.remove(colName, { id });
+    res.send(formatData());
+})
+
+
+//修改用户信息
+Router.patch("/update", async (req, res) => {
+    let { id, username, password } = req.query;
+    await mongo.update(colName, { id }, { $set: { password, username } });
+    res.send(formatData());
+})
+
+
+
 
 
 

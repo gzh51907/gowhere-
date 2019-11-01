@@ -33,12 +33,16 @@ Router.use('/home', homeRouter);
 Router.use('/page', pageRouter);
 Router.use('/content', contentTRouter);
 
+
 Router.get('/verify', (req, res) => {
     let Authorization = req.get('Authorization');
+
     // 校验token有效性
     let result = token.verify(Authorization);
+
     res.send(formatData({ code: result ? 1 : 0 }))
 });
+
 
 
 module.exports = Router
