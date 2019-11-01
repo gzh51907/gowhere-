@@ -2,7 +2,37 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import Api from '../../Api/index'
-const querystring =require ('querystring');
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import userActions from '../../store/action/user'
+import { message } from 'antd';
+
+// 弹窗函数
+const success = () => {
+    message.success({
+        content: '登录成功',
+    });
+    setTimeout(() => {
+        window.history.go(-1)
+    }, 1000)
+};
+message.config({
+    duration: 0.6,
+    top: 350
+});
+const error = () => {
+    message.error('登录失败');
+};
+
+const mapStateToProps = (state)=>{
+    return {
+        userInf: state.userReducer.userInf
+    }
+}
+const mapDispatchToProps = (dispatch)=>{
+    return bindActionCreators(userActions, dispatch)
+}
+@connect(mapStateToProps,mapDispatchToProps)
 export default class Notelogin extends Component {
 
     state = {
@@ -14,55 +44,66 @@ export default class Notelogin extends Component {
 
     // 存储手机号
     changePhone = async (e) => {
-
         await this.setState({
             phone: e.target.value.trim()
         })
-
         if(this.state.phone.length === 11){
-            // console.log('手机号合法')
             this.refs.codebtn.classList.add('active')
             this.setState({
                 codeAbled: false
             })
         }else{
             this.refs.codebtn.classList.remove('active')
+            this.refs.loginBtn.classList.remove('show')
             this.setState({
-                codeAbled: true
+                codeAbled: true,
+                loginAbled: true
             })
         }
     }
-    // 存储验证码
+    // 输入验证码
     changeCode = async (e) => {
-        await this.setState({
-            code: e.target.value.trim()
-        })
-
-        if (this.state.code.length === 6){
-            if(this.state.phone.length === 11){
-                this.setState({
-                    loginAbled: false
-                })
-                this.refs.loginBtn.classList.add('show')
-            }
+        if(e.target.value.length === 6 && this.state.phone.length === 11){
+            await this.setState({
+                loginAbled: false
+            })
+            this.refs.loginBtn.classList.add('show')            
+        }else{
+            await this.setState({
+                loginAbled: true 
+            })
+            this.refs.loginBtn.classList.remove('show') 
         }
     }
 
-    // 获取验证码
+    // 获取、存储验证码
     handleCode = async () => {
-    //     // console.log(request)
-    //     // 发送请求
         let phone = this.state.phone
-        console.log('11',phone)
-        let datalist = await Api.get(phone);
-   
+        let {data} = await Api.getCode(phone);
+        this.setState({
+            code: data
+        })
     }
 
     // 判断验证码是否输入正确
-    handleLogin = () => {
-        let phone = this.state.phone
-    }
+    handleLogin = async() => {
+        let phone = this.state.phone.trim()
+        let codeState = this.state.code
+        let codeInp = this.refs.codeInp.value.trim()
 
+        if(phone.length === 11 && codeInp == codeState){
+            localStorage.setItem('phone', phone)
+           await this.props.login({
+               userInf:{
+                    username:phone
+                }
+            })
+            // console.log(this.props)
+            success()
+        }else{
+            error()
+        }
+    }
     render(){        
         return (
             <>
@@ -73,7 +114,7 @@ export default class Notelogin extends Component {
                     </div>
                     <div className="control-item">
                         <label>验证码</label>
-                        <input className="inp" onChange={this.changeCode} type="text" placeholder="请输入验证码" maxLength="6" />
+                        <input ref="codeInp" className="inp" onChange={this.changeCode} type="text" placeholder="请输入验证码" maxLength="6" />
                         <input ref="codebtn" onClick={this.handleCode} className="codebtn" type="button" value="获取验证码" disabled={this.state.codeAbled} />
                     </div>
                 </div>

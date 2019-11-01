@@ -7,12 +7,12 @@ const querystring = require('querystring');
 Router.get('/', async (req, res) => {
     let phone = req.query.phone;
     let code = Math.floor(Math.random() * 899999 + 100000)
-
+    res.send(code.toString());
     var queryData = querystring.stringify({
         "mobile": phone,  // 接受短信的用户手机号码
-        "tpl_id": "181196",  // 您申请的短信模板ID，根据实际情况修改
+        "tpl_id": "196054",  // 您申请的短信模板ID，根据实际情况修改
         "tpl_value": `#code#=${code}`,  // 您设置的模板变量，根据实际情况修改
-        "key": "96a61f0257fbd606c43361696cc97622",  // 应用APPKEY(应用详细页查询)
+        "key": "0a7398cc01c24b101ddeac78178e31f4",  // 应用APPKEY(应用详细页查询)
     });
 
     var queryUrl = 'http://v.juhe.cn/sms/send?' + queryData;

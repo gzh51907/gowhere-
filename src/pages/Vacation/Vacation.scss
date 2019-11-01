@@ -6,6 +6,7 @@ li {
 	margin-top: 20px;
 	margin-left: 40px;
 	position: relative;
+	background: #fff;
 	input {
 		border-radius: 13px;
 		border-color: #666;
@@ -19,6 +20,7 @@ li {
 .carousel {
 	width: 100%;
 	margin-top: 10px;
+	background: #fff;
 	div {
 		width: 100%;
 		height: 110px;
@@ -33,6 +35,7 @@ li {
 	width: 33px;
 	height: 30px;
 	position: relative;
+	background: #fff;
 	p {
 		width: 33px;
 		height: 22px;
@@ -49,55 +52,296 @@ li {
 .main {
 	width: 100%;
 	height: auto;
-	background: #58bd58;
+	background: #fff;
 	.contain {
 		width: 88%;
 		margin: auto;
-		.gutterAll {
-			.gutter-row {
-				margin-top: 20px;
-				.gutter-box {
-					width: 100px;
-					height: 100px;
-					position: relative;
-					img {
+		.hotcity {
+			.gutterAll {
+				.gutter-row {
+					margin-top: 20px;
+					.gutter-box {
 						width: 100px;
 						height: 100px;
-					}
-					.contents {
-						width: 80px;
-                        height: 48px;
-                        text-align: center;
-						background: #fff;
-						opacity: 0.8;
-                        text-align: center;
-                        position: absolute;
-                        top:77px;
-                        left:10px;
-                        font-size: 18px;
-                        p{
-                            font-size: 14px;
-                        }
+						position: relative;
+						img {
+							width: 100px;
+							height: 100px;
+						}
+						.contents {
+							width: 80px;
+							height: 48px;
+							text-align: center;
+							background: #fff;
+							text-align: center;
+							position: absolute;
+							top: 77px;
+							left: 10px;
+							font-size: 18px;
+							p {
+								font-size: 14px;
+							}
+						}
 					}
 				}
-            }
-            .sp4{
-                .gutter-box{
-                    position: relative;
-                    .contents::after{
-                        content:'当季hot';
-                        display:inline-block;
-                        width:60px;
-                        height: 20px;
-                        background:rgb(245, 137, 155);
-                        color:#fff;
-                        font-size: 8px;
-                        position: absolute;
-                        top:-15px;
-                        left:10px;
-                    }
-                }
-            }
+				.sp4 {
+					.gutter-box {
+						position: relative;
+						.contents::after {
+							content: '当季hot';
+							display: inline-block;
+							width: 60px;
+							height: 20px;
+							background: rgb(238, 112, 133);
+							color: #fff;
+							font-size: 8px;
+							position: absolute;
+							top: -15px;
+							left: 10px;
+							border-bottom-left-radius: 10px;
+							border-top-right-radius: 10px;
+						}
+					}
+				}
+				.sp5 {
+					.gutter-box {
+						position: relative;
+						.contents::after {
+							content: '免签';
+							display: inline-block;
+							width: 30px;
+							height: 20px;
+							background: rgb(238, 112, 133);
+							color: #fff;
+							font-size: 8px;
+							position: absolute;
+							top: -15px;
+							left: 24px;
+							border-bottom-left-radius: 7px;
+							border-top-right-radius: 7px;
+						}
+					}
+				}
+			}
+		}
+		.city {
+			width: 100%;
+			height: auto;
+			margin-top: 60px;
+			// background:red;
+			.gutterAll {
+				margin-bottom: 8px;
+				.gutter-box {
+					width: 80px;
+					height: 30px;
+					line-height: 30px;
+					border: 1px solid #ddd;
+					text-align: center;
+					font-size: 12px;
+					color: #212121;
+					position: relative;
+				}
+				.jiuzhaig::after {
+					content: '人气';
+					display: inline-block;
+					width: 36px;
+					height: 20px;
+					line-height: 20px;
+					background: rgb(238, 112, 133);
+					border-bottom-left-radius: 7px;
+					border-top-right-radius: 7px;
+					position: absolute;
+					top: -10px;
+					right: -5px;
+					color: #fff;
+					font-size: 8px;
+				}
+			}
+		}
+		.ad-dest-post {
+			width: 100%;
+			background-color: #f5f5f5;
+			.gutterAll {
+				.gutter-row {
+					.china,
+					.yunnan,
+					.price {
+						width: 100px;
+						height: 100px;
+						background-color: #fabf69;
+						border-radius: 10px;
+						opacity: 0.9;
+						h2 {
+							width: 100%;
+							font-size: 16px;
+							font-weight: 550;
+							color: #fff;
+							text-align: center;
+							padding-top: 16px;
+						}
+						p {
+							width: 20px;
+							height: 2px;
+							background-color: #fff;
+							margin-left: 15px;
+						}
+						.bigCircle {
+							width: 36px;
+							height: 36px;
+							background-color: #fff;
+							position: absolute;
+							right: -10px;
+							bottom: 0;
+							border-radius: 50%;
+							.smCircle {
+								width: 26px;
+								height: 26px;
+								background-color: #fabf69;
+								position: absolute;
+								top: 0;
+								left: 0;
+								right: 0;
+								bottom: 0;
+								margin: auto;
+								border-radius: 50%;
+								text-align: center;
+								line-height: 26px;
+								.right {
+									font-size: 20px;
+									color: #fff;
+									padding-top: 3px;
+								}
+							}
+						}
+					}
+					.yunnan {
+						background-color: #f79092;
+						.bigCircle {
+							.smCircle {
+								background-color: #f79092;
+							}
+						}
+					}
+					.price {
+						background-color: #69caf4;
+						.bigCircle {
+							.smCircle {
+								background-color: #69caf4;
+							}
+						}
+					}
+				}
+			}
+		}
+		.freedom {
+			width: 100%;
+			margin-top: 20px;
+			.gutter-row {
+				.pic {
+					img {
+						width: 82px;
+						height: 55px;
+					}
+				}
+			}
+		}
+		.menu {
+			margin-top: 20px;
+			.gutterAll {
+				.near,
+				.global,
+				.country,
+				.day,
+				.qianzheng,
+				.wifi {
+					font-size: 18px;
+					color: #fff;
+					text-align: center;
+					width: 40px;
+					height: 40px;
+					line-height: 40px;
+					border-radius: 30%;
+					p {
+						color: #212121;
+						font-size: 12px;
+					}
+				}
+				.near {
+					background: #69e2f2;
+				}
+				.global {
+					background: #ffa3a2;
+				}
+				.country {
+					background: #82f0c6;
+				}
+				.day {
+					background: #ffca7e;
+				}
+				.qianzheng {
+					background: #ffa1b3;
+				}
+				.wifi {
+					background: #a9a8ff;
+				}
+			}
+		}
+		.icongroup {
+			margin-top: 40px;
+			background: #fff;
+			.gutterAll {
+				div {
+					font-size: 10px;
+					img {
+						width: 28px;
+						height: 28px;
+					}
+					p {
+						width: 52px;
+					}
+				}
+			}
+		}
+		.item {
+			width: 100%;
+			.gutters {
+				position: relative;
+				.classity {
+					margin-top: 6px;
+					img {
+						width: 160px;
+						height: 100px;
+					}
+				}
+				p {
+					font-size: 14px;
+					font-weight: 500;
+					color: #111;
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: 2;
+					overflow: hidden;
+				}
+				.title{
+					text-align: center;
+					display: inline-block;
+					width:65%;
+					font-size: 14px;
+					color:#fff;
+					background:#ff5555;
+					position: absolute;
+					left:15px;
+					top:6px;
+				}
+				.alls{
+					font-size: 12px;
+					color:#ff8300;
+					.price{
+						font-size: 18px;
+						font-weight: 700;
+					}
+				}
+			}
 		}
 	}
 }
