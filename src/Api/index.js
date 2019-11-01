@@ -11,6 +11,7 @@ async function get(params, config = {}) {
     return data;
 }
 
+// 获取验证码
 async function getCode(phone, config = {}) {
     let data = await gowhere.get('/notecode', {
         params:{
