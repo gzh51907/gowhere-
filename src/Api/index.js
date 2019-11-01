@@ -5,7 +5,6 @@ let gowhere = axios.create({
 
 async function getData(params, config = {}) {
     let { data}  = await gowhere.get('/home', {
->>>>>>> d7f56c798a28d0432e93c0e2358f29e3eb254565
         ...config,
         params
     });
@@ -30,12 +29,12 @@ async function getCode(phone, config = {}) {
 }
 
 
-async function list(params) {
-    let data = await gowhere.get('/list', {
-        params
-    });
-    return data;
-}
+// async function list(params) {
+//     let data = await gowhere.get('/list', {
+//         params
+//     });
+//     return data;
+// }
 
 async function checkAttention(params) {
     let data = await gowhere.get('/content/checkgz', {

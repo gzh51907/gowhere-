@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch) => {
 @connect(mapStateToProps, mapDispatchToProps)
 class Vacation extends Component {
     state = {
+        itemlist: ['尾单特惠','低价预售','超值自由行'],
         imagelist: [
             'https://imgs.qunarzz.com/p/p70/1809/e7/4941057a6aae702.jpg_216x190_1d9c854f.jpg',
             'https://imgs.qunarzz.com/p/p23/1809/b3/ac42439392acc402.jpg_216x190_4d6d9e9c.jpg',
@@ -41,23 +42,39 @@ class Vacation extends Component {
         // console.log(datalist);
         let searchDOM = this.searchDOM;
         let cityDOM = this.cityDOM;
-        console.log(searchDOM);
+        let itemDOM = this.itemDOM;
+        let boxDOM = this.boxDOM;
+        // console.log(searchDOM);
         window.onscroll = function (e) {
-            console.log(window.pageYOffset);
-            if (window.pageYOffset > 37) {
-                searchDOM.className = 'active'
-                cityDOM.style.display = 'none';
-            } else{
-                searchDOM.style.className = 'sTop';
-                cityDOM.style.display = 'inline-block';
+            console.log(window.pageYOffset)
+            if (window.pageYOffset > 900) {
+                itemDOM.className = 'now';
+            } else {
+                itemDOM.className='fixed2'
             }
+            // if (window.pageYOffset > 37) {
+            //     searchDOM.className = 'active'
+            //     cityDOM.style.display = 'none';
+            // } else{
+            //     searchDOM.style.className = 'sTop';
+            //     cityDOM.style.display = 'inline-block';
+            // }
+            
         }
     }
-
+    onClickChange = (index) => {
+        if (index === 0) {
+            window.scrollTo(0, 900)
+        } else if (index === 1) {
+            window.scrollTo(0,1213)
+        } else {
+            window.scrollTo(0,1474)
+        }
+    }
     render() {
         // console.log(this.props)
         const { Search } = Input;
-        let { datalist, imagelist } = this.state;
+        let { datalist, imagelist,itemlist } = this.state;
         // console.log("datalist", datalist);
         return (
             <div style={{ background: '#fff' }} className="fixed1">
@@ -329,39 +346,48 @@ class Vacation extends Component {
                             </Row>
                         </div>
                         <div className="item">
-                            <Menu mode="horizontal" className="fixed2">
-                                <Menu.Item>
-                                    尾单特惠
-                                </Menu.Item>
-                                <Menu.Item>
-                                    低价预售
-                                </Menu.Item>
-                                <Menu.Item>
-                                    超值自由行
-                                </Menu.Item>
-                            </Menu>
+                            <div className="fixed2" ref={el => this.itemDOM = el}>
+                                <Menu mode="horizontal">
+                                    {/* <Menu.Item>
+                                        尾单特惠
+                                    </Menu.Item>
+                                    <Menu.Item>
+                                        低价预售
+                                    </Menu.Item>
+                                    <Menu.Item>
+                                        超值自由行
+                                    </Menu.Item> */}
+                                    {
+                                        itemlist.map((item,idx) => {
+                                            return (<Menu.Item onClick={this.onClickChange.bind(this,idx)}>{item}</Menu.Item>);
+                                        })
+                                    }
+                                </Menu>
+                            </div>
                             {
-                                <Row gutter={30} className="gutters">{
-                                    datalist.map(item => {
-                                        return <Col span={12} className="pics">
-                                            <div className="classity">
-                                                <img src={item.img} />
-                                            </div>
-                                            <p>{item.title}</p>
-                                            <span className="title">
-                                                {item.tag}
-                                            </span>
-                                            <div className="alls">
-                                                <i>￥</i>
-                                                <span className="price">
-                                                    {item.price}
-                                                </span>
-                                                人/起
+                                <div className="box" ref={el => this.boxDOM = el}>
+                                    <Row gutter={30} className="gutters">{
+                                        datalist.map(item => {
+                                            return <Col span={12} className="pics">
+                                                <div className="classity">
+                                                    <img src={item.img} />
                                                 </div>
-                                        </Col>
-                                    })
-                                }
-                                </Row>
+                                                <p>{item.title}</p>
+                                                <span className="title">
+                                                    {item.tag}
+                                                </span>
+                                                <div className="alls">
+                                                    <i>￥</i>
+                                                    <span className="price">
+                                                        {item.price}
+                                                    </span>
+                                                    人/起
+                                                </div>
+                                            </Col>
+                                        })
+                                    }
+                                    </Row>
+                                </div>
                             }
                         </div>
                     </div>
