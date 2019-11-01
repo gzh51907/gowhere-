@@ -4,7 +4,7 @@ let gowhere = axios.create({
     baseURL:'http://localhost:12345'
 })
 async function get(params, config = {}) {
-    let data  = await gowhere.get('/home', {
+    let { data } = await gowhere.get('/home', {
         ...config,
         params
     });
