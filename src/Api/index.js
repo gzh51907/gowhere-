@@ -17,12 +17,51 @@ async function list(params) {
     });
     return data;
 }
+<<<<<<< HEAD
+=======
+
+// 获取验证码
+>>>>>>> ddf95370496a315098f476ecf14183fb00746cea
 async function getCode(phone, config = {}) {
     let data = await gowhere.get('/notecode', {
         params: {
             ...config,
             phone
         }
+<<<<<<< HEAD
+=======
+    })
+    return data;
+}
+
+async function postReg(params, config = {}) {
+    let data = await gowhere.post('/user/reg', {
+        params: {
+            ...config,
+            params
+        }
+    })
+    return data;
+}
+
+async function getCheck(params, config = {}) {
+    let data = await gowhere.get('/user/check', {
+        params: {
+            ...config,
+            params
+        }
+    })
+    return data;
+}
+
+
+async function Login(params, config = {}) {
+    let data = await gowhere.get('/user/login', {
+        params: {
+            ...config,
+            params
+        }
+>>>>>>> ddf95370496a315098f476ecf14183fb00746cea
     })
     console.log("data", data)
     return data;
@@ -77,6 +116,9 @@ async function ziyouxing(params) {
 export default {
     list,
     getCode,
+    postReg,
+    getCheck,
+    Login,
     checkAttention,
     addAttention,
     special,
