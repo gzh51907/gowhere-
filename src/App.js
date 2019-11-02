@@ -15,6 +15,7 @@ import Special from './pages/Special';
 import Mine from './pages/Mine';
 import Reg from './pages/Reg';
 import SpecialList from './pages/SpecialList';
+import Quit from './pages/Quit.js';
 
 
 const mapStateToProps = (state) => {//这里的state就是store里的state
@@ -51,9 +52,38 @@ class App extends Component {
         ]
     }
 
+    async componentDidMount (){
+        let phone = localStorage.getItem('phone')
+        let menu = this.state.menu
+        if(phone){
+            menu = menu.map(item => {
+                if(item.name == 'mine'){
+                    item['path'] = '/quit'
+                }
+                return item;
+            })
+            await this.setState({
+                menu
+            })
+            // console.log(this.state.menu)
+        }else{
+            menu = menu.map(item => {
+                if (item.name == 'mine') {
+                    item['path'] = '/mine'
+                }
+                return item;
+            })
+            await this.setState({
+                menu
+            })
+            // console.log(this.state.menu)
+        }
+    }
+
     render() {
         let { menu } = this.state;
         let { history } = this.props;
+        console.log(menu)
         return (
             <div>
                 <div style={{ marginBottom: 52 }}>
@@ -62,6 +92,7 @@ class App extends Component {
                         <Route path="/goods" component={Goods} />
                         <Route path="/special" component={Special} />
                         <Route path="/mine" component={Mine} />
+                        <Route path="/quit" component={Quit} />
                         <Route path="/reg" component={Reg} />
                         <Route path="/specialList" component={SpecialList} />
                         <Redirect from="/" to="/vacation" exact />
@@ -77,14 +108,16 @@ class App extends Component {
                     }}
                 >
                     {
-                        menu.map(item => <Menu.Item key={item.path} style={{ width: '25%' }}>
-                            <div style={{ height: 52, display: 'flex', flexDirection: 'column', alignItems: 'center',justifyContent:'space-around'}}>
+                        menu ? menu.map(item => <Menu.Item key={item.path} style={{ width: '25%' }}>
+                            <div style={{ height: 52, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around' }}>
                                 <Icon type={item.icon} style={{ margin: 0, fontSize: 20 }} />
-                                <p style={{fontSize:12,margin:0,lineHeight:'18px'}}>
+                                <p style={{ fontSize: 12, margin: 0, lineHeight: '18px' }}>
                                     {item.text}
                                 </p>
                             </div>
                         </Menu.Item>)
+                        :
+                        '无数据'
                     }
                 </Menu>
             </div>

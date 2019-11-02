@@ -10,6 +10,7 @@ import {
 import { Icon } from 'antd';
 
 import './css/Mine.scss'
+import './css/Quit.scss'
 
 class Mine extends Component {
 
@@ -44,7 +45,6 @@ class Mine extends Component {
     handleReg = () => {
         this.props.history.push('/reg')
     }
-
 
     render() {
         let {goBack} = this.props.history;
