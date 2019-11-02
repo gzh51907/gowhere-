@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import Api from '../../Api/index'
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import userActions from '../../store/action/user'
 import { message } from 'antd';
 
 // 弹窗函数
@@ -24,15 +21,7 @@ const error = () => {
     message.error('登录失败');
 };
 
-const mapStateToProps = (state)=>{
-    return {
-        userInf: state.userReducer.userInf
-    }
-}
-const mapDispatchToProps = (dispatch)=>{
-    return bindActionCreators(userActions, dispatch)
-}
-@connect(mapStateToProps,mapDispatchToProps)
+
 export default class Notelogin extends Component {
 
     state = {
@@ -78,11 +67,13 @@ export default class Notelogin extends Component {
 
     // 获取、存储验证码
     handleCode = async () => {
+        console.log(1)
         let phone = this.state.phone
         let {data} = await Api.getCode(phone);
         this.setState({
             code: data
         })
+        console.log(this.state.code)
     }
 
     // 登录验证
@@ -93,11 +84,6 @@ export default class Notelogin extends Component {
 
         if(phone.length === 11 && codeInp == codeState){
             localStorage.setItem('phone', phone)
-           await this.props.login({
-               userInf:{
-                    username:phone
-                }
-            })
             // console.log(this.props)
             success()
         }else{
