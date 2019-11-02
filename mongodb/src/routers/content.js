@@ -10,7 +10,7 @@ const colName = 'content';
 Router.get('/addgz', async (req, res) => {
     let { username, name } = req.query;
     let names = name;
-    let result = await mongo.find('userinf', { names });//查找点击关注的name是否已存在
+    let result = await mongo.find('userinf', { username,names });//查找点击关注的name是否已存在
     console.log(result.length)
     
     if (result.length) {
