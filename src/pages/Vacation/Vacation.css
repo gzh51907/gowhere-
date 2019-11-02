@@ -357,18 +357,35 @@ li {
 }
 .main .contain .item {
   width: 100%;
-}
-.main .contain .item .gutters {
   position: relative;
 }
-.main .contain .item .gutters .classity {
+.main .contain .item .fixed2 {
+  border-right: none;
+  text-align: center;
+}
+.main .contain .item .now {
+  position: fixed;
+  top: 40px;
+  left: 0;
+  background: #fff;
+  width: 100%;
+  z-index: 99999;
+  font-size: 14px;
+  color: #212121;
+  text-align: center;
+  border: 1px solid #fff;
+}
+.main .contain .item .box .gutters {
+  position: relative;
+}
+.main .contain .item .box .gutters .classity {
   margin-top: 6px;
 }
-.main .contain .item .gutters .classity img {
+.main .contain .item .box .gutters .classity img {
   width: 160px;
   height: 100px;
 }
-.main .contain .item .gutters p {
+.main .contain .item .box .gutters p {
   font-size: 14px;
   font-weight: 500;
   color: #111;
@@ -377,7 +394,7 @@ li {
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
-.main .contain .item .gutters .title {
+.main .contain .item .box .gutters .title {
   text-align: center;
   display: inline-block;
   width: 65%;
@@ -388,11 +405,11 @@ li {
   left: 15px;
   top: 6px;
 }
-.main .contain .item .gutters .alls {
+.main .contain .item .box .gutters .alls {
   font-size: 12px;
   color: #ff8300;
 }
-.main .contain .item .gutters .alls .price {
+.main .contain .item .box .gutters .alls .price {
   font-size: 18px;
   font-weight: 700;
 }

@@ -3,30 +3,30 @@ li {
 	list-style: none;
 }
 
-	.sTop {
-		margin-top: 10px;
-		margin-bottom: 9px;
-		text-align: center;
-		background: #fff;
-		input {
-			height: 30px;
-			border-radius: 13px;
-			border-color: #666;
-		}
+.sTop {
+	margin-top: 10px;
+	margin-bottom: 9px;
+	text-align: center;
+	background: #fff;
+	input {
+		height: 30px;
+		border-radius: 13px;
+		border-color: #666;
 	}
-	.active {
-		width:78%;
-		position: fixed;
-		top: 5px;
-		left: 50px;
-		text-align: center;
-		input {
-			border-radius: 13px;
-			border-color: #666;
-			width:100%;
-		}
-		background:#fff;
+}
+.active {
+	width: 78%;
+	position: fixed;
+	top: 5px;
+	left: 50px;
+	text-align: center;
+	input {
+		border-radius: 13px;
+		border-color: #666;
+		width: 100%;
 	}
+	background: #fff;
+}
 
 .carousel {
 	width: 100%;
@@ -315,41 +315,60 @@ li {
 		}
 		.item {
 			width: 100%;
-			.gutters {
-				position: relative;
-				.classity {
-					margin-top: 6px;
-					img {
-						width: 160px;
-						height: 100px;
+			position: relative;
+			.fixed2 {
+				border-right: none;
+				text-align: center;
+			}
+			.now {
+				position: fixed;
+				top:40px;
+				left: 0;
+				background: #fff;
+				width: 100%;
+				z-index: 99999;
+				font-size: 14px;
+				color:#212121;
+				text-align: center;
+				border:1px solid #fff;
+			}
+			.box {
+				.gutters {
+					position: relative;
+					.classity {
+						margin-top: 6px;
+						img {
+							width: 160px;
+							height: 100px;
+						}
 					}
-				}
-				p {
-					font-size: 14px;
-					font-weight: 500;
-					color: #111;
-					display: -webkit-box;
-					-webkit-box-orient: vertical;
-					-webkit-line-clamp: 2;
-					overflow: hidden;
-				}
-				.title {
-					text-align: center;
-					display: inline-block;
-					width: 65%;
-					font-size: 14px;
-					color: #fff;
-					background: #ff5555;
-					position: absolute;
-					left: 15px;
-					top: 6px;
-				}
-				.alls {
-					font-size: 12px;
-					color: #ff8300;
-					.price {
-						font-size: 18px;
-						font-weight: 700;
+					p {
+						font-size: 14px;
+						font-weight: 500;
+						color: #111;
+						display: -webkit-box;
+						-webkit-box-orient: vertical;
+						-webkit-line-clamp: 2;
+						overflow: hidden;
+					}
+					.title {
+						text-align: center;
+						display: inline-block;
+						width: 65%;
+						font-size: 14px;
+						color: #fff;
+						background: #ff5555;
+						position: absolute;
+						left: 15px;
+						top: 6px;
+					}
+					.alls {
+						font-size: 12px;
+						color: #ff8300;
+						.price {
+							font-size: 18px;
+							font-weight: 700;
+						}
 					}
 				}
 			}
