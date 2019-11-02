@@ -9,7 +9,7 @@ const colName = 'user';
 
 // 注册
 Router.post('/reg', async (req, res) => {
-    let { username, password } = req.query;
+    let { username, password } = req.body.params;
     let time = new Date();
     let userNum = await mongo.find(colName);
     let uid = userNum.length + 1;
@@ -30,6 +30,7 @@ Router.post('/reg', async (req, res) => {
 Router.get('/check', async (req, res) => {
     let { username } = req.query;
     let result = await mongo.find(colName, { username });
+    console.log(result.length)
     if (result.length) {
         res.send(formatData({ code: 0 }))
     } else {

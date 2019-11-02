@@ -91,11 +91,11 @@ export default class Accountlogin extends Component {
                 <div className="control">
                     <div className="control-item" style={{ borderBottom: '1px solid #ddd' }}>
                         <label>账号</label>
-                        <input onChange={this.changePhone} className="inp" type="text" placeholder="请输入手机号" />
+                        <input onChange={this.changePhone} className="inp" type="text" placeholder="请输入手机号" maxLength="11" />
                     </div>
                     <div className="control-item">
                         <label>密码</label>
-                        <input onChange={this.changePwd} className="inp" type="text" placeholder="请输入密码" />
+                        <input onChange={this.changePwd} className="inp" type="text" placeholder="请输入密码"maxLength="20"/>
                     </div>
                 </div>
                 <div className="login-btn"><a onClick={this.handleLogin} ref="loginBtn" className="login" disabled={this.state.loginAbled}>登录</a></div>

@@ -91,7 +91,6 @@ export default class Reg extends Component {
             let { data: { code } } = await Api.getCheck('', {
                 username
             })
-            // console.log(data)
             if (code === 0) {
                 error();
             } else if (code === 1) {
