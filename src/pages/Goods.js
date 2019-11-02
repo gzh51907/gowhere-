@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import { Row, Col, Icon, Button, Tabs, Spin, message } from 'antd';
 import Api from '../Api';
-import { connect } from 'react-redux';
 
-const mapStateToProps = (state) => {
-    return {
-        username: state.userReducer.userInf.username
-    }
-}
-@connect(mapStateToProps)
+
 class Goods extends Component {
     state = {
         activeKey: 'jingxuan',
         selectPage: 1,
+        maskImg: '',
         menu: [
             {
                 text: '精选',
@@ -70,9 +65,10 @@ class Goods extends Component {
             })
             this.setState({ datalist: data })
         } else {
-            if (this.props.username) {
+            let username = localStorage.getItem('phone')
+            if (username) {
                 let { data } = await Api.checkAttention({
-                    username: this.props.username
+                    username: username
                 })
                 let dataArr = data.map(item => {
                     return item.info
@@ -82,12 +78,14 @@ class Goods extends Component {
                     datas = [...datas, ...item]
                 })
                 await this.setState({ datalist: datas })
-                if(this.state.datalist.length!==0){
-                    this.noAttention.style.display='none'
-                }else{
-                    this.noAttention.style.display='block'
+                if (this.state.datalist.length !== 0) {
+                    this.noAttention.style.display = 'none'
+                } else {
+                    this.noAttention.style.display = 'block'
                 }
-            } 
+            } else {
+                this.noAttention.style.display = 'block'
+            }
         }
     }
 
@@ -128,23 +126,39 @@ class Goods extends Component {
     }
 
     addAttention = async (name) => {
-        if (this.state.activeKey !== 'guanzhu') {
-            await Api.addAttention({
-                username: this.props.username,
-                name
-            })
-        } else {
+        let username = localStorage.getItem('phone')
+        let { data } = await Api.addAttention({
+            username: username,
+            name
+        })
+        if (data.code === 1) {
+            message.success('关注成功~');
+        } else if (data.code === 0) {
             message.info('您已经关注过了噢~');
         }
     }
 
-    gotoAttention = ()=>{
-        if(this.props.username){
-            this.changeType('jingxuan')
-        }else{
-            let {history} = this.props;
+    gotoAttention = () => {
+        let username = localStorage.getItem('phone')
+        if (!username) {
+            let { history } = this.props;
             history.push('/mine')
         }
+    }
+
+    showMask = (url) => {
+        this.mask.style.display = 'block';
+        this.setState({ maskImg: url });
+        let mo = (e) => { e.preventDefault(); };
+        document.body.style.overflow = 'hidden';
+        document.addEventListener("touchmove", mo, false);//禁止页面滑动
+    }
+
+    hideMask = () => {
+        this.mask.style.display = 'none';
+        let mo = (e) => { e.preventDefault(); };
+        document.body.style.overflow = 'auto';//出现滚动条
+        document.removeEventListener("touchmove", mo, false);
     }
 
     async componentDidMount() {
@@ -205,10 +219,10 @@ class Goods extends Component {
                                     </p>
                                     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                                         {
-                                            item.img.split(',').map((item, idx) => {
-                                                if (item) {
+                                            item.img.split(',').map((url, idx) => {
+                                                if (url) {
                                                     return (
-                                                        <img src={item} key={idx} style={{ width: '31%', height: 103, margin: '0 5px 5px 0', boxSizing: 'border-box' }} />
+                                                        <img onClick={this.showMask.bind(this, url)} src={url} key={idx} style={{ width: '31%', height: 103, margin: '0 5px 5px 0', boxSizing: 'border-box' }} />
                                                     )
                                                 } else {
                                                     return '无图片'
@@ -232,11 +246,14 @@ class Goods extends Component {
                     <div ref={el => this.noMore = el} style={{ width: '100%', textAlign: 'center', fontSize: 17, paddingBottom: 15, display: 'none' }}>
                         没有更多了
                     </div>
-                    <div ref={el => this.noAttention = el} style={{ width: '100%', textAlign: 'center', display: 'block', height: 600 }}>
+                    <div ref={el => this.noAttention = el} style={{ width: '100%', textAlign: 'center', display: 'none', height: 600 }}>
                         <img src='https://s.qunarzz.com/package_ugc/index/noAttention.png' style={{ display: 'block', margin: 'auto', marginTop: 54 }} />
                         <img onClick={this.gotoAttention} src='https://s.qunarzz.com/package_ugc/index/attentionBtn.png' style={{ display: 'block', margin: 'auto', marginTop: 12 }} />
                     </div>
                 </ul>
+                <div onClick={this.hideMask} id="mask" ref={el => this.mask = el} style={{ position: "fixed", backgroundColor: '#000', top: 0, height: window.innerHeight, width: window.innerWidth, zIndex: 20, display: 'none' }}>
+                    <img src={this.state.maskImg} style={{ position: 'absolute', top: 0, left: 0, bottom: 0, right: 0, margin: 'auto', width: '100%' }} />
+                </div>
             </div>
         )
     }

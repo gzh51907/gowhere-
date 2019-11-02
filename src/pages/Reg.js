@@ -4,11 +4,32 @@ import { Link } from 'react-router-dom'
 import Captcha from '../components/captcha';
 
 import { Icon } from 'antd'
-import './css/Mine.scss'
+import './css/Mine.scss';
+import Api from '../Api';
+import { message } from 'antd';
+
+// 弹窗函数
+const success = () => {
+    message.success({
+        content: '注册成功',
+    });
+    setTimeout(() => {
+        window.history.go(-1)
+    }, 1000)
+};
+message.config({
+    duration: 0.6,
+    top: 350
+});
+const error = () => {
+    message.error('注册号码已存在');
+};
+
 
 export default class Reg extends Component {
 
     state = {
+        code: '',
         regAbled: true
     }
 
@@ -17,7 +38,7 @@ export default class Reg extends Component {
         let phoneLen = this.refs.phone.value.length
         let pwdLen = this.refs.pwd.value.length
         let codeLen = this.refs.code.value.length
-        console.log(phoneLen, pwdLen, codeLen)
+        // console.log(phoneLen, pwdLen, codeLen)
 
         if (phoneLen === 11 && pwdLen > 3 && codeLen === 4) {
             this.setState({
@@ -37,32 +58,59 @@ export default class Reg extends Component {
         window.history.go(-1)
     }
 
-    // 改变用户名
+    // 更新用户名
     changePhone = () => {
         this.regBtnState()
     }
-    // 改变密码
+    // 更新密码
     changePwd = () => {
         this.regBtnState()
     }
-    // 改变验证码
+    // 更新验证码
     changeCode = () => {
         this.regBtnState()
     }
 
-    // 注册
-    handleReg = () => {
-        // 获取用户名/密码/验证码
-        let phone = this.refs.phone
-        let code = this.refs.code
-        let pwd = this.refs.pwd
+    // 存储验证码
+    handleCode = (code) => {
+        console.log(this.props)
+        // console.log(code)
     }
 
-    render(){
+    // 注册
+    handleReg = async () => {
+        // 获取用户名/密码/验证码
+        let username = this.refs.phone.value
+        let codeInp = this.refs.code.value
+        let codeState = this.state.code
+        let password = this.refs.pwd.value
+        // 发送请求
+        console.log(codeInp, codeState)
+        console.log(username, password)
+        if (codeInp == codeState) {
+            let { data: { code } } = await Api.getCheck('', {
+                username
+            })
+            if (code === 0) {
+                error();
+            } else if (code === 1) {
+
+                let { data: { msg } } = await Api.postReg('', {
+                    username,
+                    password
+                })
+                if (msg == 'success') {
+                    success()
+                }
+            }
+        }
+    }
+
+    render() {
         return (
             <div>
                 <div id="header">
-                    <Icon className="arrowleft" type="left" onClick={this.goBack} style={{zIndex: 1000}} />
+                    <Icon className="arrowleft" type="left" onClick={this.goBack} style={{ zIndex: 1000 }} />
                     <h2 style={{ position: "absolute", left: 0, top: 0, width: '100%' }}>注册</h2>
                 </div>
                 <div id="content">
@@ -74,14 +122,26 @@ export default class Reg extends Component {
                             </div>
 
                             <div className="control-item" style={{ borderBottom: '1px solid #ddd' }}>
-                                <label style={{letterSpacing: 15}}>密码</label>
+                                <label style={{ letterSpacing: 15 }}>密码</label>
                                 <input ref="pwd" onChange={this.changePwd} className="inp" type="text" placeholder="请输入密码" />
                             </div>
 
                             <div className="control-item">
                                 <label>图形码</label>
                                 <input ref="code" onChange={this.changeCode} className="inp" type="text" placeholder="请输入图形码" maxLength="4" />
-                                <Captcha length={4} onChange={function (code) { console.log(this) }} />
+                                <Captcha length={4} onChange={
+                                    async (code) => {
+                                        // console.log(code); 
+                                        // console.log(this)
+                                        // console.log(this.state)
+                                        // let code = this.state.code
+                                        await this.setState({
+                                            code
+                                        })
+                                        // console.log(this.state.code)
+                                    }}
+                                />
+                                {/* <Captcha length={4} onChange={this.handleCode.bind(this, code) } /> */}
                             </div>
                         </div>
                         <div className="login-btn"><a onClick={this.handleReg} ref="regBtn" className="login" disabled={this.state.regAbled}>注册</a></div>
@@ -98,5 +158,5 @@ export default class Reg extends Component {
                 </div>
             </div>
         )
-    } 
+    }
 }
