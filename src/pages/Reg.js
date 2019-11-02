@@ -9,6 +9,7 @@ import './css/Mine.scss'
 export default class Reg extends Component {
 
     state = {
+        code: '',
         regAbled: true
     }
 
@@ -17,7 +18,7 @@ export default class Reg extends Component {
         let phoneLen = this.refs.phone.value.length
         let pwdLen = this.refs.pwd.value.length
         let codeLen = this.refs.code.value.length
-        console.log(phoneLen, pwdLen, codeLen)
+        // console.log(phoneLen, pwdLen, codeLen)
 
         if (phoneLen === 11 && pwdLen > 3 && codeLen === 4) {
             this.setState({
@@ -37,25 +38,35 @@ export default class Reg extends Component {
         window.history.go(-1)
     }
 
-    // 改变用户名
+    // 更新用户名
     changePhone = () => {
         this.regBtnState()
     }
-    // 改变密码
+    // 更新密码
     changePwd = () => {
         this.regBtnState()
     }
-    // 改变验证码
+    // 更新验证码
     changeCode = () => {
         this.regBtnState()
+    }
+
+    // 存储验证码
+    handleCode = (code) => {
+        console.log(this.props)
+        // console.log(code)
     }
 
     // 注册
     handleReg = () => {
         // 获取用户名/密码/验证码
-        let phone = this.refs.phone
-        let code = this.refs.code
-        let pwd = this.refs.pwd
+        let phone = this.refs.phone.value
+        let codeInp = this.refs.code.value
+        let codeState = this.state.code
+        let pwd = this.refs.pwd.value
+        // 发送请求
+        console.log(codeInp, codeState)
+        console.log(phone, pwd)
     }
 
     render(){
@@ -81,7 +92,19 @@ export default class Reg extends Component {
                             <div className="control-item">
                                 <label>图形码</label>
                                 <input ref="code" onChange={this.changeCode} className="inp" type="text" placeholder="请输入图形码" maxLength="4" />
-                                <Captcha length={4} onChange={function (code) { console.log(this) }} />
+                                <Captcha length={4} onChange={
+                                        async (code) => { 
+                                            // console.log(code); 
+                                            // console.log(this)
+                                            // console.log(this.state)
+                                            // let code = this.state.code
+                                            await this.setState({
+                                                code
+                                            })
+                                            // console.log(this.state.code)
+                                        }} 
+                                    />
+                                {/* <Captcha length={4} onChange={this.handleCode.bind(this, code) } /> */}
                             </div>
                         </div>
                         <div className="login-btn"><a onClick={this.handleReg} ref="regBtn" className="login" disabled={this.state.regAbled}>注册</a></div>
