@@ -2,34 +2,54 @@ ul,
 li {
 	list-style: none;
 }
-.search {
-	margin-top: 40px;
-	position: relative;
-	background: #fff;
+
+.sTop {
+	margin-top: 10px;
+	margin-bottom: 9px;
 	text-align: center;
-	z-index: 99999;
-	.sTop {
-		margin-left: 50px;
-		width: 80%;
-		input {
-			border-radius: 13px;
-			border-color: #666;
-		}
-	}
-	.active {
-		width: 78%;
-		position: fixed;
-		top: 5px;
-		left: 50px;
-		text-align: center;
-		input {
-			border-radius: 13px;
-			border-color: #666;
-			width: 100%;
-		}
-		background: #fff;
+// <<<<<<< HEAD
+	// z-index: 99999;
+	// .sTop {
+	// 	margin-left: 50px;
+	// 	width: 80%;
+	// 	input {
+	// 		border-radius: 13px;
+	// 		border-color: #666;
+	// 	}
+	// }
+	// .active {
+	// 	width: 78%;
+	// 	position: fixed;
+	// 	top: 5px;
+	// 	left: 50px;
+	// 	text-align: center;
+	// 	input {
+	// 		border-radius: 13px;
+	// 		border-color: #666;
+	// 		width: 100%;
+	// 	}
+	// 	background: #fff;
+	background: #fff;
+	input {
+		height: 30px;
+		border-radius: 13px;
+		border-color: #666;
 	}
 }
+.active {
+	width: 78%;
+	position: fixed;
+	top: 5px;
+	left: 50px;
+	text-align: center;
+	input {
+		border-radius: 13px;
+		border-color: #666;
+		width: 100%;
+	}
+	background: #fff;
+}
+
 .carousel {
 	width: 100%;
 	margin-top: 10px;
@@ -85,14 +105,19 @@ li {
 							width: 80px;
 							height: 48px;
 							text-align: center;
-							background: #fff;
+							background: #fafefe;
 							text-align: center;
 							position: absolute;
-							top: 77px;
+							top: 60px;
 							left: 10px;
-							font-size: 18px;
+							font-size: 16px;
+							box-shadow: 0px 1px 5px #ccc;
+							// opacity: 0.95;
+
 							p {
-								font-size: 14px;
+								font-size: 12px;
+								font-weight: 400;
+								transform: scale(0.90); 
 							}
 						}
 					}
@@ -135,6 +160,9 @@ li {
 						}
 					}
 				}
+			}
+			.modfity{
+				padding-top: 5px;
 			}
 		}
 		.city {
@@ -324,11 +352,16 @@ li {
 			}
 			.now {
 				position: fixed;
-				bottom: 592px;
+				top:40px;
 				left: 0;
 				background: #fff;
 				width: 100%;
 				z-index: 99999;
+				font-size: 14px;
+				color:#212121;
+				text-align: center;
+				border:1px solid #fff;
+
 			}
 			.box {
 				.gutters {

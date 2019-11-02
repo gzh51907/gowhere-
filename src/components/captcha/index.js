@@ -35,17 +35,9 @@ class Captcha extends React.Component {
   createCodes() {
     const { length, codes } = this.props;
     let result = [];
-    // let lines = [];
     for(let i = 0; i < length; i++) {
       result.push({code: codes[this.random(0, codes.length - 1)], style: this.codeStyle(i)});
     }
-    // for(let i = 0; i < OPTIONS.lines; i++) {
-    //   lines.push({style: this.createLines()});
-    // }
-
-    // this.setState({ result, lines }, () => {
-    //   this.onChange();
-    // });
     this.setState({ result }, () => {
       this.onChange();
     });
@@ -53,7 +45,7 @@ class Captcha extends React.Component {
 
   codeStyle(i) {
   
-    const uW = this.props.width / this.props.length;        // 每个字符占的宽度
+    const uW = this.props.width / (this.props.length + 1);        // 每个字符占的宽度
 
     return {
       'fontSize': `${this.random(OPTIONS.fontSizeMin, OPTIONS.fontSizeMax)}px`,
@@ -61,35 +53,16 @@ class Captcha extends React.Component {
       'position': 'absolute',
       'left': `${this.random(uW * i, ((uW * i) + uW) - (uW / 2))}px`,
       'top': '50%',
-      'transform': `rotate(${this.random(-10, 10)}deg) translateY(-50%)`,
-      'OTransform': `rotate(${this.random(-10, 10)}deg) translateY(-50%)`,
-      'MsTransform': `rotate(${this.random(-10, 10)}deg) translateY(-50%)`,
-      'MozTransform': `rotate(${this.random(0, 10)}deg) translateY(-50%)`,
-      'WebkitTransform': `rotate(${this.random(-10, 10)}deg) translateY(-50%)`,
+      'transform': `rotate(${this.random(-5, 5)}deg) translateY(-50%)`,
+      'OTransform': `rotate(${this.random(-5, 5)}deg) translateY(-50%)`,
+      'MsTransform': `rotate(${this.random(-5, 5)}deg) translateY(-50%)`,
+      'MozTransform': `rotate(${this.random(-5, 5)}deg) translateY(-50%)`,
+      'WebkitTransform': `rotate(${this.random(-5, 5)}deg) translateY(-50%)`,
       'fontFamily': `${OPTIONS.fonts[this.random(0, OPTIONS.fonts.length - 1)]}`,
       'fontWeight': 'bold',
       'zIndex': '2'
     }
   }
-  
-  // createLines() {
-  //   return {
-  //       'position': 'absolute',
-  //       'opacity': `${this.random(3, 8) / 10}`,
-  //       'width': `${this.random(OPTIONS.lineWidthMin, OPTIONS.lineWidthMax)}px`,
-  //       'height': `${this.random(OPTIONS.lineHeightMin, OPTIONS.lineHeightMax)}px`,
-  //       'background': `${OPTIONS.lineColors[this.random(0, OPTIONS.lineColors.length - 1)]}`,
-  //       'left': `${this.random(-OPTIONS.lineWidthMin/2, this.props.width)}px`,
-  //       'top': `${this.random(0, this.props.height)}px`,
-  //       'transform': `rotate(${this.random(-30, 30)}deg)`,
-  //       'OTransform': `rotate(${this.random(-30, 30)}deg)`,
-  //       'MsTransform': `rotate(${this.random(-30, 30)}deg)`,
-  //       'MozTransform': `rotate(${this.random(-30, 30)}deg)`,
-  //       'WebkitTransform': `rotate(${this.random(-30, 30)}deg)`,
-  //       'fontFamily': `${OPTIONS.fonts[this.random(0, OPTIONS.fonts.length - 1)]}`,
-  //       'fontWeight': `${this.random(400, 900)}`
-  //   }
-  // }
 
   onChange() {
     const { result } = this.state;
@@ -102,7 +75,6 @@ class Captcha extends React.Component {
 
 
 	render() {
-    // const { result, lines } = this.state;
     const { result } = this.state;
     const style = Object.assign({}, this.state.style, this.props.style);
 		return (
@@ -112,11 +84,6 @@ class Captcha extends React.Component {
             return  <span key={index} style={item.style}>{item.code}</span>
           })
         }
-        {/* { 
-          lines && lines.map((item, index) => {
-            return  <div key={index} style={item.style} />
-          })
-        } */}
       </div>
 		);
 	}

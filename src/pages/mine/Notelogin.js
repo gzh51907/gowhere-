@@ -48,12 +48,12 @@ export default class Notelogin extends Component {
             phone: e.target.value.trim()
         })
         if(this.state.phone.length === 11){
-            this.refs.codebtn.classList.add('active')
+            this.refs.codebtn.classList.add('btnactive')
             this.setState({
                 codeAbled: false
             })
         }else{
-            this.refs.codebtn.classList.remove('active')
+            this.refs.codebtn.classList.remove('btnactive')
             this.refs.loginBtn.classList.remove('show')
             this.setState({
                 codeAbled: true,
@@ -85,7 +85,7 @@ export default class Notelogin extends Component {
         })
     }
 
-    // 判断验证码是否输入正确
+    // 登录验证
     handleLogin = async() => {
         let phone = this.state.phone.trim()
         let codeState = this.state.code
