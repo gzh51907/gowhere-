@@ -1,0 +1,421 @@
+﻿ul,
+li {
+  list-style: none;
+}
+.sTop {
+  margin-top: 10px;
+  margin-bottom: 9px;
+  text-align: center;
+  background: #fff;
+}
+.sTop input {
+  height: 30px;
+  border-radius: 13px;
+  border-color: #666;
+}
+.active {
+  width: 78%;
+  position: fixed;
+  top: 5px;
+  left: 50px;
+  text-align: center;
+  background: #fff;
+}
+.active input {
+  border-radius: 13px;
+  border-color: #666;
+  width: 100%;
+}
+.carousel {
+  width: 100%;
+  margin-top: 10px;
+  background: #fff;
+}
+.carousel div {
+  width: 100%;
+  height: 110px;
+}
+.carousel div img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.adv {
+  width: 33px;
+  height: 30px;
+  position: relative;
+  background: #fff;
+}
+.adv p {
+  width: 33px;
+  height: 22px;
+  background: #000;
+  opacity: 0.6;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  bottom: 15px;
+  z-index: 1000;
+}
+.main {
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+.main .contain {
+  width: 88%;
+  margin: auto;
+}
+.main .contain .hotcity .gutterAll .gutter-row {
+  margin-top: 20px;
+}
+.main .contain .hotcity .gutterAll .gutter-row .gutter-box {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+.main .contain .hotcity .gutterAll .gutter-row .gutter-box img {
+  width: 100px;
+  height: 100px;
+}
+.main .contain .hotcity .gutterAll .gutter-row .gutter-box .contents {
+  width: 80px;
+  height: 48px;
+  text-align: center;
+  background: #fafefe;
+  text-align: center;
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  font-size: 16px;
+  box-shadow: 0px 1px 5px #ccc;
+}
+.main .contain .hotcity .gutterAll .gutter-row .gutter-box .contents p {
+  font-size: 12px;
+  font-weight: 400;
+  transform: scale(0.9);
+}
+.main .contain .hotcity .gutterAll .sp4 .gutter-box {
+  position: relative;
+}
+.main .contain .hotcity .gutterAll .sp4 .gutter-box .contents::after {
+  content: "当季hot";
+  display: inline-block;
+  width: 60px;
+  height: 20px;
+  background: #ee7085;
+  color: #fff;
+  font-size: 8px;
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.main .contain .hotcity .gutterAll .sp5 .gutter-box {
+  position: relative;
+}
+.main .contain .hotcity .gutterAll .sp5 .gutter-box .contents::after {
+  content: "免签";
+  display: inline-block;
+  width: 30px;
+  height: 20px;
+  background: #ee7085;
+  color: #fff;
+  font-size: 8px;
+  position: absolute;
+  top: -15px;
+  left: 24px;
+  border-bottom-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+.main .contain .hotcity .modfity {
+  padding-top: 5px;
+}
+.main .contain .city {
+  width: 100%;
+  height: auto;
+  margin-top: 60px;
+}
+.main .contain .city .gutterAll {
+  margin-bottom: 8px;
+}
+.main .contain .city .gutterAll .gutter-box {
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-size: 12px;
+  color: #212121;
+  position: relative;
+}
+.main .contain .city .gutterAll .jiuzhaig::after {
+  content: "人气";
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  line-height: 20px;
+  background: #ee7085;
+  border-bottom-left-radius: 7px;
+  border-top-right-radius: 7px;
+  position: absolute;
+  top: -10px;
+  right: -5px;
+  color: #fff;
+  font-size: 8px;
+}
+.main .contain .ad-dest-post {
+  width: 100%;
+  background-color: #f5f5f5;
+}
+.main .contain .ad-dest-post .gutterAll .gutter-row .china,
+.main .contain .ad-dest-post .gutterAll .gutter-row .yunnan,
+.main .contain .ad-dest-post .gutterAll .gutter-row .price {
+  width: 100px;
+  height: 100px;
+  background-color: #fabf69;
+  border-radius: 10px;
+  opacity: 0.9;
+}
+.main .contain .ad-dest-post .gutterAll .gutter-row .china h2,
+.main .contain .ad-dest-post .gutterAll .gutter-row .yunnan h2,
+.main .contain .ad-dest-post .gutterAll .gutter-row .price h2 {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 550;
+  color: #fff;
+  text-align: center;
+  padding-top: 16px;
+}
+.main .contain .ad-dest-post .gutterAll .gutter-row .china p,
+.main .contain .ad-dest-post .gutterAll .gutter-row .yunnan p,
+.main .contain .ad-dest-post .gutterAll .gutter-row .price p {
+  width: 20px;
+  height: 2px;
+  background-color: #fff;
+  margin-left: 15px;
+}
+.main .contain .ad-dest-post .gutterAll .gutter-row .china .bigCircle,
+.main .contain .ad-dest-post .gutterAll .gutter-row .yunnan .bigCircle,
+.main .contain .ad-dest-post .gutterAll .gutter-row .price .bigCircle {
+  width: 36px;
+  height: 36px;
+  background-color: #fff;
+  position: absolute;
+  right: -10px;
+  bottom: 0;
+  border-radius: 50%;
+}
+.main .contain .ad-dest-post .gutterAll .gutter-row .china .bigCircle .smCircle,
+.main
+  .contain
+  .ad-dest-post
+  .gutterAll
+  .gutter-row
+  .yunnan
+  .bigCircle
+  .smCircle,
+.main
+  .contain
+  .ad-dest-post
+  .gutterAll
+  .gutter-row
+  .price
+  .bigCircle
+  .smCircle {
+  width: 26px;
+  height: 26px;
+  background-color: #fabf69;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 26px;
+}
+.main
+  .contain
+  .ad-dest-post
+  .gutterAll
+  .gutter-row
+  .china
+  .bigCircle
+  .smCircle
+  .right,
+.main
+  .contain
+  .ad-dest-post
+  .gutterAll
+  .gutter-row
+  .yunnan
+  .bigCircle
+  .smCircle
+  .right,
+.main
+  .contain
+  .ad-dest-post
+  .gutterAll
+  .gutter-row
+  .price
+  .bigCircle
+  .smCircle
+  .right {
+  font-size: 20px;
+  color: #fff;
+  padding-top: 3px;
+}
+.main .contain .ad-dest-post .gutterAll .gutter-row .yunnan {
+  background-color: #f79092;
+}
+.main
+  .contain
+  .ad-dest-post
+  .gutterAll
+  .gutter-row
+  .yunnan
+  .bigCircle
+  .smCircle {
+  background-color: #f79092;
+}
+.main .contain .ad-dest-post .gutterAll .gutter-row .price {
+  background-color: #69caf4;
+}
+.main
+  .contain
+  .ad-dest-post
+  .gutterAll
+  .gutter-row
+  .price
+  .bigCircle
+  .smCircle {
+  background-color: #69caf4;
+}
+.main .contain .freedom {
+  width: 100%;
+  margin-top: 20px;
+}
+.main .contain .freedom .gutter-row .pic img {
+  width: 82px;
+  height: 55px;
+}
+.main .contain .menu {
+  margin-top: 20px;
+}
+.main .contain .menu .gutterAll .near,
+.main .contain .menu .gutterAll .global,
+.main .contain .menu .gutterAll .country,
+.main .contain .menu .gutterAll .day,
+.main .contain .menu .gutterAll .qianzheng,
+.main .contain .menu .gutterAll .wifi {
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 30%;
+}
+.main .contain .menu .gutterAll .near p,
+.main .contain .menu .gutterAll .global p,
+.main .contain .menu .gutterAll .country p,
+.main .contain .menu .gutterAll .day p,
+.main .contain .menu .gutterAll .qianzheng p,
+.main .contain .menu .gutterAll .wifi p {
+  color: #212121;
+  font-size: 12px;
+}
+.main .contain .menu .gutterAll .near {
+  background: #69e2f2;
+}
+.main .contain .menu .gutterAll .global {
+  background: #ffa3a2;
+}
+.main .contain .menu .gutterAll .country {
+  background: #82f0c6;
+}
+.main .contain .menu .gutterAll .day {
+  background: #ffca7e;
+}
+.main .contain .menu .gutterAll .qianzheng {
+  background: #ffa1b3;
+}
+.main .contain .menu .gutterAll .wifi {
+  background: #a9a8ff;
+}
+.main .contain .icongroup {
+  margin-top: 40px;
+  background: #fff;
+}
+.main .contain .icongroup .gutterAll div {
+  font-size: 10px;
+}
+.main .contain .icongroup .gutterAll div img {
+  width: 28px;
+  height: 28px;
+}
+.main .contain .icongroup .gutterAll div p {
+  width: 52px;
+}
+.main .contain .item {
+  width: 100%;
+  position: relative;
+}
+.main .contain .item .fixed2 {
+  border-right: none;
+  text-align: center;
+}
+.main .contain .item .now {
+  position: fixed;
+  top: 40px;
+  left: 0;
+  background: #fff;
+  width: 100%;
+  z-index: 99999;
+  font-size: 14px;
+  color: #212121;
+  text-align: center;
+  border: 1px solid #fff;
+}
+.main .contain .item .box .gutters {
+  position: relative;
+}
+.main .contain .item .box .gutters .classity {
+  margin-top: 6px;
+}
+.main .contain .item .box .gutters .classity img {
+  width: 160px;
+  height: 100px;
+}
+.main .contain .item .box .gutters p {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.main .contain .item .box .gutters .title {
+  text-align: center;
+  display: inline-block;
+  width: 65%;
+  font-size: 14px;
+  color: #fff;
+  background: #ff5555;
+  position: absolute;
+  left: 15px;
+  top: 6px;
+}
+.main .contain .item .box .gutters .alls {
+  font-size: 12px;
+  color: #ff8300;
+}
+.main .contain .item .box .gutters .alls .price {
+  font-size: 18px;
+  font-weight: 700;
+}
