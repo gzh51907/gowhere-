@@ -9,10 +9,14 @@ const colName = 'user';
 
 // 注册
 Router.post('/reg', async (req, res) => {
-    let { username, password } = req.body.params;
-    let result
+    let { username, password } = req.query;
+    let time = new Date();
+    let userNum = await mongo.find(colName);
+    let uid = userNum.length + 1;
+    let id = uid.toString();
+    let result;
     try {
-        await mongo.create(colName, [{ username, password ,regtime: new Date() }]);
+        await mongo.create(colName, [{id,username, password, regtime: time.toLocaleString() }]);
         result = formatData()
     } catch (err) {
         result = formatData({ code: 0 })
@@ -20,11 +24,14 @@ Router.post('/reg', async (req, res) => {
     res.send(result);
 })
 
+
+
+//用户验证
 Router.get('/check', async (req, res) => {
     let { username } = req.query;
     let result = await mongo.find(colName, { username });
     if (result.length) {
-        res.send(formatData({ code: 0 })) 
+        res.send(formatData({ code: 0 }))
     } else {
         res.send(formatData());
     }
@@ -66,8 +73,12 @@ Router.get('/find', async (req, res) => {
 //增加用户
 Router.post('/adduser', async (req, res) => {
     let { username, password } = req.query;
-    let result = await mongo.create(colName, [{ username, password }])
-    res.send(result)
+    let time = new Date();
+    let userNum = await mongo.find(colName);
+    let uid = userNum.length + 1;
+    let id = uid.toString();
+     await mongo.create(colName, [{id, username, password ,regtime:time.toLocaleString()}])
+    res.send(formatData())
 })
 
 
@@ -85,13 +96,6 @@ Router.patch("/update", async (req, res) => {
     await mongo.update(colName, { id }, { $set: { password, username } });
     res.send(formatData());
 })
-
-
-
-
-
-
-
 
 
 module.exports = Router;
