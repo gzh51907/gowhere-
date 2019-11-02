@@ -123,7 +123,7 @@ export default class Reg extends Component {
 
                             <div className="control-item" style={{ borderBottom: '1px solid #ddd' }}>
                                 <label style={{ letterSpacing: 15 }}>密码</label>
-                                <input ref="pwd" onChange={this.changePwd} className="inp" type="text" placeholder="请输入密码" />
+                                <input ref="pwd" onChange={this.changePwd} className="inp" type="password" placeholder="请输入密码" />
                             </div>
 
                             <div className="control-item">

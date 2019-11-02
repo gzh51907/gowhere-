@@ -32,6 +32,12 @@ class Mine extends Component {
         ]
     }
 
+    componentDidMount(){
+        let phone = localStorage.getItem('phone')
+        if(phone){
+            this.props.history.push('/quit')
+        }
+    }
 
     handleClick = (index) => {
         let menu = this.state.menu

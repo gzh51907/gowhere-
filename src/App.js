@@ -52,38 +52,9 @@ class App extends Component {
         ]
     }
 
-    async componentDidMount (){
-        let phone = localStorage.getItem('phone')
-        let menu = this.state.menu
-        if(phone){
-            menu = menu.map(item => {
-                if(item.name == 'mine'){
-                    item['path'] = '/quit'
-                }
-                return item;
-            })
-            await this.setState({
-                menu
-            })
-            // console.log(this.state.menu)
-        }else{
-            menu = menu.map(item => {
-                if (item.name == 'mine') {
-                    item['path'] = '/mine'
-                }
-                return item;
-            })
-            await this.setState({
-                menu
-            })
-            // console.log(this.state.menu)
-        }
-    }
-
     render() {
         let { menu } = this.state;
         let { history } = this.props;
-        console.log(menu)
         return (
             <div>
                 <div style={{ marginBottom: 52 }}>
