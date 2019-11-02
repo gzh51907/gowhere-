@@ -13,11 +13,7 @@ async function getData(params, config = {}) {
     return data;
 }
 
-<<<<<<< HEAD
-
-=======
 // 获取验证码
->>>>>>> wwg
 async function getCode(phone, config = {}) {
     let data = await gowhere.get('/notecode', {
         params:{
