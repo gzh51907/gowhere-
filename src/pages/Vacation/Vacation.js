@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch) => {
 @connect(mapStateToProps, mapDispatchToProps)
 class Vacation extends Component {
     state = {
+
         itemlist: ['尾单特惠', '低价预售', '超值自由行'],
         imagelist: [
             'https://imgs.qunarzz.com/p/p70/1809/e7/4941057a6aae702.jpg_216x190_1d9c854f.jpg',
@@ -40,6 +41,12 @@ class Vacation extends Component {
             datalist,
         });
         // console.log(datalist);
+
+        let searchDOM = this.searchDOM;
+        let cityDOM = this.cityDOM;
+        let boxDOM = this.boxDOM;
+        // console.log(searchDOM);
+
         let hideBox = this.hideBox;
         let nextBox = this.nextBox;
         let bigBox = this.bigBox;
@@ -50,6 +57,11 @@ class Vacation extends Component {
             let Opacity = 1 - (window.scrollY * 0.05);
             let bigBoxOffSet = bigBox.offsetHeight;
             let bigBoxHeight = bigBoxOffSet - scroll;
+            if (window.pageYOffset > 900) {
+                itemDOM.className = 'now';
+            } else {
+                itemDOM.className = 'fixed2'
+            }
             if (window.pageYOffset > 940) {
                 itemDOM.className = 'now';
             } else {
@@ -66,7 +78,21 @@ class Vacation extends Component {
                 hideBox.style.transform = 'translateY(-50px)';
                 nextBox.style.transform = 'translateY(-50px)';
                 bigBox.style.height = '44px';
+
             }
+            
+        }
+    }
+
+
+            
+    onClickChange = (index) => {
+        if (index === 0) {
+            window.scrollTo(0, 900)
+        } else if (index === 1) {
+            window.scrollTo(0,1213)
+        } else {
+            window.scrollTo(0,1474)
         }
     }
 
@@ -79,6 +105,7 @@ class Vacation extends Component {
             window.scrollTo(0, 1474)
         }
     }
+
     render() {
         // console.log(this.props)
         const { Search } = Input;
@@ -360,9 +387,12 @@ class Vacation extends Component {
                         <div className="item">
                             <div className="fixed2" ref={el => this.itemDOM = el}>
                                 <Menu mode="horizontal">
+
+
                                     {
                                         itemlist.map((item, idx) => {
-                                            return (<Menu.Item onClick={this.onClickChange.bind(this, idx)}>{item}</Menu.Item>);
+                                            return (<Menu.Item key={idx} onClick={this.onClickChange.bind(this, idx)}>{item}</Menu.Item>);
+
                                         })
                                     }
                                 </Menu>
@@ -370,8 +400,8 @@ class Vacation extends Component {
                             {
                                 <div className="box" ref={el => this.boxDOM = el}>
                                     <Row gutter={30} className="gutters">{
-                                        datalist.map(item => {
-                                            return <Col span={12} className="pics">
+                                        datalist.map((item,index) => {
+                                            return <Col span={12} className="pics" key={index}>
                                                 <div className="classity">
                                                     <img src={item.img} />
                                                 </div>
