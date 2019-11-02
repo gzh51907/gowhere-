@@ -5,14 +5,14 @@ const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 import './App.scss'
 
-export default class App extends Component{
+export default class App extends Component {
 
-    render(){
+    render() {
         return (
             <div>
                 <Layout className="backsys">
                     <Header className="header">
-                        <div className="logo" style={{ float: 'left', width: 200, height: '100%', background: 'rgba(255, 255, 255, 0.2)'}}>
+                        <div className="logo" style={{ float: 'left', width: 200, height: '100%', background: 'rgba(255, 255, 255, 0.2)' }}>
                             <h2 style={{ color: '#fff', textAlign: 'center' }}>后台管理系统</h2>
                         </div>
                         <div className="current-user">
@@ -44,7 +44,7 @@ export default class App extends Component{
                                         <span>
                                             <Icon type="user" />
                                             subnav 1
-              </span>
+                                        </span>
                                     }
                                 >
                                     <Menu.Item key="1">option1</Menu.Item>
