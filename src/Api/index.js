@@ -1,14 +1,31 @@
 import axios from 'axios';
 
+
 let gowhere = axios.create({
     baseURL: 'http://localhost:12345'
 })
-async function get(params, config = {}) {
-    let { data } = await gowhere.get('/home', {
+
+async function getData(params, config = {}) {
+    let { data}  = await gowhere.get('/home', {
         ...config,
         params
     });
-    return data
+    return data;
+}
+
+<<<<<<< HEAD
+
+=======
+// 获取验证码
+>>>>>>> wwg
+async function getCode(phone, config = {}) {
+    let data = await gowhere.get('/notecode', {
+        params:{
+            ...config,
+            phone
+        }        
+    })
+    return data;
 }
 
 
@@ -57,15 +74,15 @@ async function ziyouxing(params) {
     });
     return data;
 }
-
-
 export default {
-    get,
     list,
+    getCode,
     checkAttention,
     addAttention,
     special,
+    getData,
     weidan,
     dijia,
     ziyouxing
 }
+

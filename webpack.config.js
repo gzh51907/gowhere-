@@ -55,7 +55,8 @@ module.exports = {
         // 创建dist文件
         new HtmlWebpackPlugin({
             template: './src/template.html',
-            filename:'index.html'
+            filename:'index.html',
+            favicon: './src/favicon.ico'
         })
     ]
 }

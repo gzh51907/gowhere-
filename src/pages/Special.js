@@ -65,7 +65,7 @@ class Special extends Component {
                                         }
                                     </ul>
                                     <div style={{ textAlign: 'center' }}>
-                                        <Button onClick={this.gotolist.bind(this, item.type)} style={{ color: '#40a9ff', borderColor: '#40a9ff' }}>更多预售产品</Button>
+                                        <Button onClick={this.gotolist.bind(this, item.type)} style={{ color: '#40a9ff', borderColor: '#40a9ff' }}>{item.buttom}</Button>
                                     </div>
                                 </div>
                             )
