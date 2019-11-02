@@ -1,18 +1,21 @@
 import axios from 'axios';
-
-
 let gowhere = axios.create({
     baseURL: 'http://localhost:12345'
 })
 
 async function getData(params, config = {}) {
-    let { data}  = await gowhere.get('/home', {
+    let { data } = await gowhere.get('/home', {
         ...config,
         params
     });
     return data;
 }
-
+async function list(params) {
+    let data = await gowhere.get('/list', {
+        params
+    });
+    return data;
+}
 // 获取验证码
 async function getCode(phone, config = {}) {
     let data = await gowhere.get('/notecode', {
@@ -52,17 +55,9 @@ async function Login(params, config = {}) {
             params
         }
     })
+    console.log("data", data)
     return data;
 }
-
-
-async function list(params) {
-    let data = await gowhere.get('/list', {
-        params
-    });
-    return data;
-}
-
 async function checkAttention(params) {
     let data = await gowhere.get('/content/checkgz', {
         params
