@@ -13,17 +13,44 @@ async function getData(params, config = {}) {
     return data;
 }
 
-<<<<<<< HEAD
-
-=======
 // 获取验证码
->>>>>>> wwg
 async function getCode(phone, config = {}) {
     let data = await gowhere.get('/notecode', {
-        params:{
+        params: {
             ...config,
             phone
-        }        
+        }
+    })
+    return data;
+}
+
+async function postReg(params, config = {}) {
+    let data = await gowhere.post('/user/reg', {
+        params: {
+            ...config,
+            params
+        }
+    })
+    return data;
+}
+
+async function getCheck(params, config = {}) {
+    let data = await gowhere.get('/user/check', {
+        params: {
+            ...config,
+            params
+        }
+    })
+    return data;
+}
+
+
+async function Login(params, config = {}) {
+    let data = await gowhere.get('/user/login', {
+        params: {
+            ...config,
+            params
+        }
     })
     return data;
 }
@@ -77,6 +104,9 @@ async function ziyouxing(params) {
 export default {
     list,
     getCode,
+    postReg,
+    getCheck,
+    Login,
     checkAttention,
     addAttention,
     special,

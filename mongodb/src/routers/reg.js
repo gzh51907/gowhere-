@@ -9,10 +9,10 @@ const colName = 'user';
 
 // 注册
 Router.post('/reg', async (req, res) => {
-    let { username, password } = req.body;
+    let { username, password } = req.body.params;
     let result
     try {
-        await mongo.create(colName, [{ username, password, regtime: new Date() }]);
+        await mongo.create(colName, [{ username, password ,regtime: new Date() }]);
         result = formatData()
     } catch (err) {
         result = formatData({ code: 0 })
@@ -24,7 +24,7 @@ Router.get('/check', async (req, res) => {
     let { username } = req.query;
     let result = await mongo.find(colName, { username });
     if (result.length) {
-        res.send(formatData({ code: 0 }))// 
+        res.send(formatData({ code: 0 })) 
     } else {
         res.send(formatData());
     }

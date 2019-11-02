@@ -70,10 +70,19 @@ export default class Accountlogin extends Component {
     }
 
     // 登录验证
-    handleLogin = () => {
-        let phone = this.state.phone
-        let pwd = this.state.pwd
+    handleLogin =async () => {
+        let username = this.state.phone
+        let password = this.state.pwd
         // 发送请求
+        let {data:{msg} }= await Api.Login('', {
+            username,
+            password
+        })
+        if (msg == 'success') {
+            success()
+        } else if(msg == 'fail'){
+            error();
+        }
     }
 
     render(){
