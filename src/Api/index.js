@@ -12,7 +12,6 @@ async function getData(params, config = {}) {
 }
 async function list(params) {
     let data = await gowhere.get('/list', {
-        ...config,
         params
     });
     return data;
