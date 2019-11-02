@@ -17,19 +17,13 @@ async function list(params) {
     });
     return data;
 }
-<<<<<<< HEAD
-=======
-
 // 获取验证码
->>>>>>> ddf95370496a315098f476ecf14183fb00746cea
 async function getCode(phone, config = {}) {
     let data = await gowhere.get('/notecode', {
         params: {
             ...config,
             phone
         }
-<<<<<<< HEAD
-=======
     })
     return data;
 }
@@ -61,20 +55,10 @@ async function Login(params, config = {}) {
             ...config,
             params
         }
->>>>>>> ddf95370496a315098f476ecf14183fb00746cea
     })
     console.log("data", data)
     return data;
 }
-
-
-// async function list(params) {
-//     let data = await gowhere.get('/list', {
-//         params
-//     });
-//     return data;
-// }
-
 async function checkAttention(params) {
     let data = await gowhere.get('/content/checkgz', {
         params

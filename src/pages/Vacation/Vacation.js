@@ -142,7 +142,7 @@ class Vacation extends Component {
 
                                 </Col>
                             </Row>
-                            <Row gutter={16} className="gutterAll">
+                            <Row gutter={16} className="gutterAll modifty">
                                 <Col className="gutter-row sp4" span={8}>
                                     <div className="gutter-box">
                                         <img src={this.state.imagelist[3]} />

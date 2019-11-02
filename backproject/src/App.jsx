@@ -12,12 +12,6 @@ const { Header, Content, Sider } = Layout;
 
 // 引入antd样式
 import './App.scss'
-
-<<<<<<< HEAD
-export default class App extends Component {
-
-    render() {
-=======
 @withRouter
 export default class App extends Component{
 
@@ -49,8 +43,6 @@ export default class App extends Component{
     render(){
         // 解构数据
         let { silderData } = this.state
-
->>>>>>> dev
         return (
             <div>
                 <Layout className="backsys">
@@ -64,7 +56,6 @@ export default class App extends Component{
                     </Header>
                     <Layout>
                         <Sider width={200} style={{ background: '#fff' }}>
-<<<<<<< HEAD
                             <Menu
                                 theme="dark"
                                 mode="inline"
@@ -152,7 +143,6 @@ export default class App extends Component{
                                 )
                             })
                         }
->>>>>>> dev
                         </Sider>
                         <Layout style={{ padding: '0 24px 24px' }}>
                             <Breadcrumb style={{ margin: '16px 0' }}>
