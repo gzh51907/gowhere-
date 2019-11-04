@@ -1,6 +1,6 @@
 import axios from 'axios';
 let gowhere = axios.create({
-    baseURL: 'http://localhost:12345'
+    baseURL: 'http://121.40.124.130:23456'
 })
 
 async function getData(params, config = {}) {
@@ -55,7 +55,7 @@ async function Login(params, config = {}) {
             params
         }
     })
-    console.log("data", data)
+    // console.log("data", data)
     return data;
 }
 async function checkAttention(params) {
