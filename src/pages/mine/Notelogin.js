@@ -2,20 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import Api from '../../Api/index'
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import userActions from '../../store/action/user'
 import { message } from 'antd';
 
-// 弹窗函数
-const success = () => {
-    message.success({
-        content: '登录成功',
-    });
-    setTimeout(() => {
-        window.history.go(-1)
-    }, 1000)
-};
 message.config({
     duration: 0.6,
     top: 350
@@ -24,15 +15,15 @@ const error = () => {
     message.error('登录失败');
 };
 
-const mapStateToProps = (state)=>{
+const mapStateToProps = (state) => {
     return {
         userInf: state.userReducer.userInf
     }
 }
-const mapDispatchToProps = (dispatch)=>{
+const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(userActions, dispatch)
 }
-@connect(mapStateToProps,mapDispatchToProps)
+@connect(mapStateToProps, mapDispatchToProps)
 export default class Notelogin extends Component {
 
     state = {
@@ -42,17 +33,27 @@ export default class Notelogin extends Component {
         loginAbled: true
     }
 
+    // 弹窗函数
+    success = () => {
+        message.success({
+            content: '登录成功',
+        });
+        setTimeout(() => {
+            this.props.history.push('/vacation')
+        }, 1000)
+    };
+
     // 存储手机号
     changePhone = async (e) => {
         await this.setState({
             phone: e.target.value.trim()
         })
-        if(this.state.phone.length === 11){
+        if (this.state.phone.length === 11) {
             this.refs.codebtn.classList.add('btnactive')
             this.setState({
                 codeAbled: false
             })
-        }else{
+        } else {
             this.refs.codebtn.classList.remove('btnactive')
             this.refs.loginBtn.classList.remove('show')
             this.setState({
@@ -63,48 +64,48 @@ export default class Notelogin extends Component {
     }
     // 输入验证码
     changeCode = async (e) => {
-        if(e.target.value.length === 6 && this.state.phone.length === 11){
+        if (e.target.value.length === 6 && this.state.phone.length === 11) {
             await this.setState({
                 loginAbled: false
             })
-            this.refs.loginBtn.classList.add('show')            
-        }else{
+            this.refs.loginBtn.classList.add('show')
+        } else {
             await this.setState({
-                loginAbled: true 
+                loginAbled: true
             })
-            this.refs.loginBtn.classList.remove('show') 
+            this.refs.loginBtn.classList.remove('show')
         }
     }
 
     // 获取、存储验证码
     handleCode = async () => {
         let phone = this.state.phone
-        let {data} = await Api.getCode(phone);
+        let { data } = await Api.getCode(phone);
         this.setState({
             code: data
         })
     }
 
     // 登录验证
-    handleLogin = async() => {
+    handleLogin = async () => {
         let phone = this.state.phone.trim()
         let codeState = this.state.code
         let codeInp = this.refs.codeInp.value.trim()
 
-        if(phone.length === 11 && codeInp == codeState){
+        if (phone.length === 11 && codeInp == codeState) {
             localStorage.setItem('phone', phone)
-           await this.props.login({
-               userInf:{
-                    username:phone
+            await this.props.login({
+                userInf: {
+                    username: phone
                 }
             })
             // console.log(this.props)
-            success()
-        }else{
+            this.success()
+        } else {
             error()
         }
     }
-    render(){        
+    render() {
         return (
             <>
                 <div className="control">
@@ -126,7 +127,7 @@ export default class Notelogin extends Component {
                 <Link to="">隐私政策</Link>
                 </div>
             </>
-        )    
+        )
     }
 
 }

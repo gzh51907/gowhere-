@@ -8,22 +8,12 @@ import './css/Mine.scss';
 import Api from '../Api';
 import { message } from 'antd';
 
-// 弹窗函数
-const success = () => {
-    message.success({
-        content: '注册成功',
-    });
-    setTimeout(() => {
-        window.history.go(-1)
-    }, 1000)
-};
+
 message.config({
     duration: 0.6,
     top: 350
 });
-const error = () => {
-    message.error('注册号码已存在');
-};
+
 
 
 export default class Reg extends Component {
@@ -32,6 +22,20 @@ export default class Reg extends Component {
         code: '',
         regAbled: true
     }
+
+    // 弹窗函数
+    success = () => {
+        message.success({
+            content: '注册成功',
+        });
+        setTimeout(() => {
+            this.props.history.push('/mine/notelogin')
+        }, 1000)
+    };
+
+    error = () => {
+        message.error('注册号码已存在');
+    };
 
     // 封装函数，判断注册按钮的状态
     regBtnState = () => {
@@ -55,7 +59,7 @@ export default class Reg extends Component {
 
     // 返回上一页
     goBack = () => {
-        window.history.go(-1)
+        this.props.history.push('/mine/notelogin')
     }
 
     // 更新用户名
@@ -73,7 +77,7 @@ export default class Reg extends Component {
 
     // 存储验证码
     handleCode = (code) => {
-        console.log(this.props)
+        // console.log(this.props)
         // console.log(code)
     }
 
@@ -85,14 +89,14 @@ export default class Reg extends Component {
         let codeState = this.state.code
         let password = this.refs.pwd.value
         // 发送请求
-        console.log(codeInp, codeState)
-        console.log(username, password)
+        // console.log(codeInp, codeState)
+        // console.log(username, password)
         if (codeInp == codeState) {
             let { data: { code } } = await Api.getCheck('', {
                 username
             })
             if (code === 0) {
-                error();
+                this.error();
             } else if (code === 1) {
 
                 let { data: { msg } } = await Api.postReg('', {
@@ -100,7 +104,7 @@ export default class Reg extends Component {
                     password
                 })
                 if (msg == 'success') {
-                    success()
+                    this.success()
                 }
             }
         }

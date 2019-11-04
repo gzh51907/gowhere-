@@ -3,22 +3,12 @@ import { Link } from 'react-router-dom';
 import Api from '../../Api/index.js'
 import { message } from 'antd';
 
-// 弹窗函数
-const success = () => {
-    message.success({
-        content: '登录成功',
-    });
-    setTimeout(() => {
-        window.location.href = "http://localhost:8080/#/vacation"
-    }, 1000)
-};
+
 message.config({
     duration: 0.6,
     top: 350
 });
-const error = () => {
-    message.error('用户名或密码错误！');
-};
+
 
 export default class Accountlogin extends Component {
 
@@ -30,16 +20,30 @@ export default class Accountlogin extends Component {
         loginAbled: true
     }
 
+    // 弹窗函数
+    success = () => {
+        message.success({
+            content: '登录成功',
+        });
+        setTimeout(() => {
+            this.props.history.push('/vacation')
+        }, 1000)
+    };
+
+    error = () => {
+        message.error('用户名或密码错误！');
+    };
+
     // 封装函数，判断登录按钮的状态
     loginBtnState = () => {
         let phoneAbled = this.state.phoneAbled
         let pwdAbled = this.state.pwdAbled
-        if (!phoneAbled && !pwdAbled){
+        if (!phoneAbled && !pwdAbled) {
             this.setState({
                 loginAbled: false
             })
             this.refs.loginBtn.classList.add('show')
-        }else{
+        } else {
             this.setState({
                 loginAbled: true
             })
@@ -49,7 +53,7 @@ export default class Accountlogin extends Component {
 
     // 存储手机号
     changePhone = async (e) => {
-        if (e.target.value.trim()){
+        if (e.target.value.trim()) {
             await this.setState({
                 phone: e.target.value.trim(),
                 phoneAbled: false,
@@ -70,23 +74,23 @@ export default class Accountlogin extends Component {
     }
 
     // 登录验证
-    handleLogin =async () => {
+    handleLogin = async () => {
         let username = this.state.phone
         let password = this.state.pwd
         // 发送请求
-        let {data:{msg} }= await Api.Login('', {
+        let { data: { msg } } = await Api.Login('', {
             username,
             password
         })
         if (msg == 'success') {
-            success()
+            this.success()
             localStorage.setItem('phone', username);
-        } else if(msg == 'fail'){
-            error();
+        } else if (msg == 'fail') {
+            this.error();
         }
     }
 
-    render(){
+    render() {
         return (
             <>
                 <div className="control">
@@ -96,7 +100,7 @@ export default class Accountlogin extends Component {
                     </div>
                     <div className="control-item">
                         <label>密码</label>
-                        <input onChange={this.changePwd} className="inp" type="password" placeholder="请输入密码"maxLength="20"/>
+                        <input onChange={this.changePwd} className="inp" type="password" placeholder="请输入密码" maxLength="20" />
                     </div>
                 </div>
                 <div className="login-btn"><a onClick={this.handleLogin} ref="loginBtn" className="login" disabled={this.state.loginAbled}>登录</a></div>

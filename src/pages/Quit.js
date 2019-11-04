@@ -14,13 +14,13 @@ export default class Quit extends Component{
 
     // 点击切换到首页
     handleHome = () => {
-        window.location.href = "http://localhost:8080/#/vacation"
+        this.props.history.push('./vacation')
     }
 
     // 点击退出，清除缓存
     handleQuit = () => {
         localStorage.removeItem('phone')
-        window.location.href = "http://localhost:8080/#/mine/notelogin"
+        this.props.history.push('/mine/notelogin')
     }
 
     // 页面渲染前判断
