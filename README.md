@@ -1,68 +1,238 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+去哪儿
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+- 官网：https://touch.dujia.qunar.com/
+- 上线网址：http://121.40.124.130:12315
+- git 仓库地址：https://github.com/gzh51907/gowhere- 
 
-### `yarn start`
+团队协作分工
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- 组长：郑文 组员：季子锐 汪卫国 刘海华
+- 模块负责说明：
+  - 郑文:首页，后台管理系统
+  - 汪卫国：登录，注册，短信验证接口
+  - 季子锐：好货页，特卖页
+  - 刘海华：数据爬虫，接口
 
-### `yarn test`
+部分项目截图
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 首页
+  
+  
+  
+- 好货页
+  
+  
+- 特卖页
+  
+- 登录注册页
+  
+  
+  
 
-### `yarn build`
+技术栈
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+前端
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- React
+- webpack
+- ReactRouter
+- Redux
+- React-Redux
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+后端
 
-### `yarn eject`
+- Nodejs
+- Express
+- MongoDB
+- Ant-Design
+- siwper
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+文件夹 PATH 列表
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+│  .babelrc
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+│  .gitignore
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+│  package-lock.json
 
-## Learn More
+│  package.json
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+│  README.md
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+│  tree.txt
 
-### Code Splitting
+│  webpack.config.js
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+│  
 
-### Analyzing the Bundle Size
+├─mongodb
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+│  │  package-lock.json
 
-### Making a Progressive Web App
+│  │  package.json
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+│  │  
 
-### Advanced Configuration
+│  └─src
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+│      │  config.json
 
-### Deployment
+│      │  server.js
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+│      │  
 
-### `yarn build` fails to minify
+│      ├─db
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+│      │      index.js
+
+│      │      mongo.js
+
+│      │      
+
+│      ├─routers
+
+│      │      content.js
+
+│      │      home.js
+
+│      │      index.js
+
+│      │      list.js
+
+│      │      notecode.js
+
+│      │      page.js
+
+│      │      reg.js
+
+│      │      
+
+│      └─utils
+
+│              index.js
+
+│              token.js
+
+│              
+
+└─src
+
+    │  App.js
+
+    │  favicon.ico
+
+    │  main.js
+
+    │  template.html
+
+    │  
+
+    ├─Api
+
+    │      index.js
+
+    │      
+
+    ├─components
+
+    │  └─captcha
+
+    │          config.js
+
+    │          index.js
+
+    │          
+
+    ├─images
+
+    │      64a35f4ab3ab1fad57731edb3d.png_92.png
+
+    │      6c7152c2a8b35a9c49bb26ea25.png_92.png
+
+    │      8f6e29b7b6ce0a807742c2587a.png_92.png
+
+    │      b7f09964d1e7a6280cca361c46.png_92.png
+
+    │      e24bca3f1ef6ae6ebdee15e4ca.png_92.png
+
+    │      p0.png
+
+    │      tag-bg.png
+
+    │      tag.png
+
+    │      
+
+    ├─pages
+
+    │  │  Goods.js
+
+    │  │  Mine.js
+
+    │  │  Quit.js
+
+    │  │  Reg.js
+
+    │  │  Special.js
+
+    │  │  SpecialList.js
+
+    │  │  
+
+    │  ├─css
+
+    │  │      Mine.css
+
+    │  │      Mine.min.css
+
+    │  │      Mine.scss
+
+    │  │      Quit.scss
+
+    │  │      
+
+    │  ├─mine
+
+    │  │      Accountlogin.js
+
+    │  │      Minereg.js
+
+    │  │      Notelogin.js
+
+    │  │      
+
+    │  └─Vacation
+
+    │          Vacation.css
+
+    │          Vacation.js
+
+    │          Vacation.min.css
+
+    │          Vacation.scss
+
+    │          
+
+    └─store
+
+        │  index.js
+
+        │  
+
+        ├─action
+
+        │      user.js
+
+        │      
+
+        └─reducer
+
+                index.js
+
+                user.js
+
+                
